@@ -78,8 +78,8 @@ export async function POST(req: Request) {
     if (!question) return NextResponse.json<AskFail>({ ok: false, lang: uiLang, code: "bad_request", message: uiLang === "az" ? "Zəhmət olmasa sual yazın." : "Please type a question." });
     if (question.length > MAX_QUESTION_CHARS) return fail("bad_request", uiLang);
 
-    const hit = cached<AskOk>(question);
-    if (hit) return NextResponse.json(hit);
+    const hit = cached<AskOk | AskFail>(question);
+    if (hit) return NextResponse.json({ ...hit, lang: hit.ok ? hit.lang : uiLang });
 
     const visitor = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "anon";
     const limit = checkLimits(visitor);
@@ -88,7 +88,12 @@ export async function POST(req: Request) {
     // 2. AI call 1: question → plan.  3. Code: plan → numbers.  4. AI call 2: numbers → words.
     const p = await plan(question);
     const r = execute(p);
-    if (!r.ok) return fail(r.reason, r.lang, r.detail);
+    if (!r.ok) {
+      // Remember "not in the data" answers too, so the same question doesn't use the AI again.
+      const res: AskFail = { ok: false, lang: r.lang, code: r.reason, message: errorMessage(r.reason, r.lang, r.detail) };
+      remember(question, res);
+      return NextResponse.json(res);
+    }
     const { text, checked } = await write(question, r);
     const response = ok(r, text, checked);
     remember(question, response);

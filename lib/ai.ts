@@ -11,14 +11,24 @@ import { unbackedNumbers } from "./numbercheck";
 import { templateAnswer } from "./templates";
 import { fmt, fmtPct } from "./format";
 
-export const MODEL = process.env.LLM_MODEL || "gemini-3.6-flash";
-// Used when the main model is overloaded or slow (503/504/timeout).
-export const FALLBACK_MODEL = process.env.LLM_FALLBACK_MODEL || "gemini-3.5-flash-lite";
+// The free Gemini tier gives each model its own small per-minute quota, so we
+// spread calls across several models. The planner (which needs the best model)
+// tries the main model first; the writer starts on the light models, so one
+// question uses at most one call from each model's quota.
+function list(v: string | undefined, fallback: string[]): string[] {
+  const xs = (v ?? "").split(",").map((x) => x.trim()).filter(Boolean);
+  return xs.length ? xs : fallback;
+}
+const MAIN = process.env.LLM_MODEL || "gemini-3.6-flash";
+const LIGHT = list(process.env.LLM_FALLBACK_MODEL, ["gemini-3.5-flash-lite", "gemini-3.1-flash-lite"]);
+export const PLAN_MODELS = [...new Set([MAIN, ...LIGHT])];
+export const WRITE_MODELS = [...new Set([...LIGHT, MAIN])];
+export const MODEL = MAIN;
 
 let client: GoogleGenAI | null = null;
 function getClient(): GoogleGenAI {
   // One client per server instance. The key comes from GEMINI_API_KEY in the environment.
-  // Short timeout and no SDK retries: we retry once on the fallback model instead,
+  // Short timeout and no SDK retries: we move on to the next model instead,
   // so the whole request stays inside Vercel's time limit.
   client ??= new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY,
@@ -34,24 +44,45 @@ function thinking(model: string): GenConfig["thinkingConfig"] {
   return /gemini-2\./.test(model) ? { thinkingBudget: 0 } : { thinkingLevel: "LOW" as never };
 }
 
+// A model that just said "quota used up" (429) is skipped for a while, so the
+// next questions go straight to a model that still has quota.
+const resting = new Map<string, number>();
+const REST_MS = 30_000;
+function isResting(model: string, now = Date.now()) {
+  return (resting.get(model) ?? 0) > now;
+}
+
 function retryable(err: unknown): boolean {
   if (err instanceof ApiError) return err.status === 429 || err.status >= 500;
   return true; // timeouts and network errors
 }
 
-/** Calls the main model, and the fallback model once if the main one is busy or slow. */
-async function generate(contents: string, config: GenConfig) {
-  try {
-    return await getClient().models.generateContent({ model: MODEL, contents, config: { ...config, thinkingConfig: thinking(MODEL) } });
-  } catch (err) {
-    if (!retryable(err) || FALLBACK_MODEL === MODEL) throw err;
-    console.warn("main model failed; trying fallback", err instanceof ApiError ? err.status : err);
-    return await getClient().models.generateContent({
-      model: FALLBACK_MODEL,
-      contents,
-      config: { ...config, thinkingConfig: thinking(FALLBACK_MODEL) },
-    });
+/**
+ * Tries each model in order. Moves on at once after a 429; after a slow
+ * failure (timeout, 5xx) it allows only one more attempt, to stay inside the
+ * time limit. Throws the last error if every model fails.
+ */
+async function generate(models: string[], contents: string, config: GenConfig) {
+  const now = Date.now();
+  const order = [...models.filter((m) => !isResting(m, now)), ...models.filter((m) => isResting(m, now))];
+  let lastErr: unknown;
+  let slowFailures = 0;
+  for (const model of order) {
+    try {
+      return await getClient().models.generateContent({ model, contents, config: { ...config, thinkingConfig: thinking(model) } });
+    } catch (err) {
+      lastErr = err;
+      if (!retryable(err)) throw err;
+      if (err instanceof ApiError && err.status === 429) {
+        resting.set(model, Date.now() + REST_MS);
+        console.warn(`model ${model} is out of quota; trying the next one`);
+        continue;
+      }
+      console.warn(`model ${model} failed; trying the next one`, err instanceof ApiError ? err.status : err);
+      if (++slowFailures >= 2) break;
+    }
   }
+  throw lastErr;
 }
 
 // Plan JSON schema for the model, built once from the zod schema.
@@ -126,7 +157,7 @@ function noPlan(question: string): Plan {
 export async function plan(question: string): Promise<Plan> {
   let text: string | undefined;
   try {
-    const res = await generate(question, {
+    const res = await generate(PLAN_MODELS, question, {
       systemInstruction: PLANNER_SYSTEM,
       responseMimeType: "application/json",
       responseJsonSchema: PLAN_JSON_SCHEMA,
@@ -190,7 +221,7 @@ export async function write(question: string, r: Result): Promise<{ text: string
     `Numbers you may use:\n${numbersForWriter(r).map((l) => `- ${l}`).join("\n")}`,
   ].join("\n");
   try {
-    const res = await generate(payload, { systemInstruction: WRITER_SYSTEM, maxOutputTokens: 1000 });
+    const res = await generate(WRITE_MODELS, payload, { systemInstruction: WRITER_SYSTEM, maxOutputTokens: 1000 });
     if (res.candidates?.[0]?.finishReason !== FinishReason.STOP) return { text: fallback, checked: false };
     const text = (res.text ?? "").trim();
     if (!text) return { text: fallback, checked: false };
