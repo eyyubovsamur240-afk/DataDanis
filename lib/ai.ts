@@ -108,12 +108,12 @@ function mapError(err: unknown): never {
 const latestYear = Math.max(...DATASETS.map((d) => d.year_max));
 
 // Fixed system prompt (no dates or per-request values).
-const PLANNER_SYSTEM = `You are the query planner for DataDanış, a public website that answers questions about official Azerbaijani statistics (State Statistics Committee data published on opendata.az).
+const PLANNER_SYSTEM = `You are the query planner for DataDanış, a public website that answers questions about official Azerbaijani statistics (State Statistics Committee data published on opendata.az), plus World Bank figures that compare Azerbaijan with neighbouring countries.
 
 Your only job is to turn the user's question into a query plan. You never calculate or state numbers yourself; code computes everything from the data.
 
 Rules:
-- Pick exactly one dataset from the catalog below, and 1–4 item ids from that dataset. If the question needs data that is not in the catalog (monthly or current prices, a specific city or region, a specific product like bread, opinions, forecasts, anything after the last year in the data), set can_answer=false and dataset_id="none".
+- Pick exactly one dataset from the catalog below, and 1–4 item ids from that dataset. If the question needs data that is not in the catalog (monthly or current prices, a single district or a city other than Baku, a specific product like bread, opinions, forecasts, anything after the last year in the data), set can_answer=false and dataset_id="none". Regional tables cover Baku, Nakhchivan and the economic regions; country tables (WB_*) cover Azerbaijan, Georgia, Armenia, Türkiye, Kazakhstan, Uzbekistan, Russia and the world average.
 - answer_language: "az" if the question is in Azerbaijani (with or without the letters ə, ı, ş, ç, ğ, ö, ü) or Russian; "en" if it is in English.
 - Operations:
   - value: the figure for one year ("how many people lived here in 2026?"). Put that year in year_to; leave year_from null. If no year is given, leave both null (latest year is used).
@@ -121,6 +121,7 @@ Rules:
   - change: the difference between two specific years ("2005 vs now"). Set year_from and year_to.
   - compare: several items side by side (men vs women, sectors). For one year, set year_to only; for a range, set both.
   - extreme: the highest or lowest year in a range; set extreme to "max" or "min".
+  - rank: which region or country is highest or lowest in one year ("which region pays the most?", "where is unemployment lowest?", "rank the countries"). Leave item_ids empty to rank every item; set year_to only (or null for the latest year); set extreme to "max" or "min"; chart bar.
 - Relative years: the latest year in the data is ${latestYear}, but each item has its own range (see the catalog). "Now", "today", "currently" and "this year" mean the latest year available for that item: leave year_to null. "Last N years" means year_from = (latest year of the item) − N + 1.
 - If the user asks about a year outside an item's range, still fill in that year; the app will explain what is covered.
 - chart_type: "line" for trends over time, "bar" to compare items or a few years, "kpi" for a single number, "table" only if asked for a table.
@@ -136,6 +137,11 @@ Examples:
 - "2026-cı ilin əvvəlində Azərbaycanda neçə nəfər yaşayırdı?" → DT_AA_001, items ["001"], value, year_to 2026, kpi, az
 - "Qadınlar kişilərdən neçə il çox yaşayır?" → DT_AA_011, items ["003","002"], compare, year_to null, bar, az
 - "Which sector pays the most?" → DT_AB_036, items ["003","012","011","016"], compare, year_to null, bar, en
+- "Hansı rayonda maaş ən yüksəkdir?" → DT_AB_080, items [], rank, year_to null, extreme max, bar, az
+- "Where is unemployment lowest?" → DT_AB_076, items [], rank, year_to null, extreme min, bar, en
+- "Bakıda internetdən neçə faiz istifadə edir?" → DT_CC_005, items ["002"], value, year_to null, kpi, az
+- "How does Azerbaijan's GDP per person compare with Georgia and Kazakhstan?" → WB_GDP_PC, items ["AZE","GEO","KAZ"], compare, year_to null, bar, en
+- "Azərbaycanda inflyasiya Türkiyə ilə müqayisədə son 10 ildə necə olub?" → WB_INFLATION, items ["AZE","TUR"], trend, year_from ${latestYear - 9}, year_to ${latestYear}, line, az
 - "Bakıda çörəyin qiyməti nə qədərdir?" → can_answer false, dataset_id "none" (no city or product prices)
 - "Сколько разводов было в 2024 году?" → DT_AA_006, items ["002"], value, year_to 2024, kpi, az`;
 
@@ -191,6 +197,11 @@ function numbersForWriter(r: Result): string[] {
   const L: Lang = r.lang;
   const val = (n: number) => (r.shown_as_pct_change ? fmtPct(n, L) : `${fmt(n, L)}`);
   const lines: string[] = [];
+  if (r.ranking) {
+    lines.push(`ranking for ${r.year_to}, highest to lowest (rows marked "total" are averages, not a region or country):`);
+    r.ranking.forEach((x, i) => lines.push(`${i + 1}. ${x.label}${x.total ? " (total)" : ""}: ${val(x.value)}`));
+    return lines;
+  }
   for (const f of r.facts) {
     if (f.from && f.to && f.from.year !== f.to.year) {
       lines.push(`${f.label}, ${f.from.year}: ${val(f.from.value)}`);

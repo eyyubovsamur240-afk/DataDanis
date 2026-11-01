@@ -30,6 +30,15 @@ export function followUps(p: Plan | PlanInput, lang: Lang): FollowUp[] {
     chart_type: "line",
   };
   const out: FollowUp[] = [];
+
+  if (p.operation === "rank") {
+    // After a ranking: the whole-country trend, and the same ranking in the first year.
+    const y = p.year_to ?? maxY;
+    out.push({ key: "trend", label: az ? `${itemLabel(ds, ds.default_item, lang)}: bütün illər` : `${itemLabel(ds, ds.default_item, lang)}: all years`, plan: { ...base, item_ids: [ds.default_item], year_from: minY, year_to: maxY } });
+    if (y !== minY) out.push({ key: "rank-first", label: az ? `${minY}-ci ildə sıralama` : `Ranking in ${minY}`, plan: { ...base, item_ids: [], operation: "rank", year_from: null, year_to: minY, chart_type: "bar" } });
+    if (y !== maxY) out.push({ key: "rank-last", label: az ? `${maxY}-ci ildə sıralama` : `Ranking in ${maxY}`, plan: { ...base, item_ids: [], operation: "rank", year_from: null, year_to: maxY, chart_type: "bar" } });
+    return out;
+  }
   const isRange = p.year_from !== null && p.year_to !== null && p.year_from !== p.year_to;
   const fullRange = p.year_from === minY && p.year_to === maxY;
 

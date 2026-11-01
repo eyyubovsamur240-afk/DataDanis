@@ -7,6 +7,9 @@ import { templateAnswer } from "@/lib/templates";
 import { errorMessage, type ErrorCode } from "@/lib/i18n";
 import { checkLimits, normaliseQuestion, cached, remember, MAX_QUESTION_CHARS } from "@/lib/guards";
 import { DATA_AS_OF, type Lang } from "@/lib/catalog";
+import { rateIntent, currencyName } from "@/lib/rates";
+import { getRates } from "@/lib/rates-server";
+import { fmt } from "@/lib/format";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -31,12 +34,45 @@ export interface AskOk {
   /** the plan that produced this answer, with the years actually used; drives share links and follow-ups */
   plan?: Omit<Result["plan"], "answer_language"> & { answer_language?: Lang };
   dataset_id?: string;
+  /** "rates": a live CBAR exchange-rate answer (no chart, no plan) */
+  kind?: "rates";
 }
 export interface AskFail {
   ok: false;
   lang: Lang;
   code: ErrorCode;
   message: string;
+}
+
+/** "Dollar rate today?" → today's official CBAR rate, computed by code, no AI call. */
+async function ratesAnswer(codes: string[], question: string, uiLang: Lang): Promise<AskOk | null> {
+  const data = await getRates();
+  const found = codes.map((c) => data.rates.find((r) => r.code === c)).filter((r) => r !== undefined);
+  if (!found.length) return null;
+  // Answer in the question's language: Latin letters ə/ı/ş/ç/ğ/ö/ü or Cyrillic → az, otherwise the UI language.
+  const lang: Lang = /[əğıöüçş\u0400-\u04FF]/i.test(question) ? "az" : /\b(what|rate|today|how|the|exchange|current|dollar)\b/i.test(question) ? "en" : uiLang;
+  const parts = found.map((r) => {
+    return `${r.nominal} ${currencyName(r, lang)} = ${fmt(r.value, lang, 4)} ${lang === "az" ? "manat" : "manats"}`;
+  });
+  const snap = data.origin === "snapshot";
+  const answer =
+    lang === "az"
+      ? `Mərkəzi Bankın ${data.date} tarixinə rəsmi məzənnəsi: ${parts.join("; ")}.${snap ? " (Mərkəzi Bankın saytına indi qoşulmaq alınmadı, ona görə son saxlanmış məzənnə göstərilir.)" : ""}`
+      : `Official Central Bank rate for ${data.date}: ${parts.join("; ")}.${snap ? " (The Central Bank site couldn't be reached just now, so the last saved rate is shown.)" : ""}`;
+  const year = Number(data.date.slice(-4));
+  return {
+    ok: true,
+    lang,
+    kind: "rates",
+    answer,
+    checked: true,
+    chart: { type: "table", title: lang === "az" ? "Rəsmi məzənnələr" : "Official exchange rates", unit: "AZN", series: [] },
+    unit: "AZN",
+    year_from: year,
+    year_to: year,
+    source: { title: lang === "az" ? `Rəsmi məzənnələr, ${data.date}` : `Official exchange rates, ${data.date}`, url: data.source_url, name: "CBAR" },
+    data_as_of: data.date,
+  };
 }
 
 function fail(code: ErrorCode, lang: Lang, detail?: Parameters<typeof errorMessage>[2], status = 200) {
@@ -82,6 +118,13 @@ export async function POST(req: Request) {
     const question = normaliseQuestion(body.question ?? "");
     if (!question) return NextResponse.json<AskFail>({ ok: false, lang: uiLang, code: "bad_request", message: uiLang === "az" ? "Zəhmət olmasa sual yazın." : "Please type a question." });
     if (question.length > MAX_QUESTION_CHARS) return fail("bad_request", uiLang);
+
+    // Today's exchange rate: answered from the Central Bank file, no AI call and no quota used.
+    const codes = rateIntent(question);
+    if (codes) {
+      const res = await ratesAnswer(codes, question, uiLang);
+      if (res) return NextResponse.json(res);
+    }
 
     const hit = cached<AskOk | AskFail>(question);
     if (hit) return NextResponse.json({ ...hit, lang: hit.ok ? hit.lang : uiLang });

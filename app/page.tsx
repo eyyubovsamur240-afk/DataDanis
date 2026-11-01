@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import Answer from "@/components/Answer";
 import Highlights from "@/components/Highlights";
 import Explorer from "@/components/Explorer";
+import Rates from "@/components/Rates";
 import VoiceButton from "@/components/VoiceButton";
 import { UI } from "@/lib/i18n";
 import { EXAMPLES } from "@/lib/examples";
@@ -130,6 +131,7 @@ export default function Home() {
             </ul>
             <h2 className="section-title">{t.latest}</h2>
             <Highlights lang={lang} onOpen={(label, plan) => showLocal(label, plan)} />
+            <Rates lang={lang} />
           </section>
         )}
 

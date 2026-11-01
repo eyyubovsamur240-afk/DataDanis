@@ -32,6 +32,23 @@ function one(r: Result, f: ItemFacts): string {
   return s + ".";
 }
 
+function ranking(r: Result): string {
+  const az = r.lang === "az";
+  const all = r.ranking ?? [];
+  const list = all.filter((x) => !x.total);
+  if (!list.length) return all.length ? one(r, r.facts[0]) : "";
+  const top = list[0];
+  const bottom = list[list.length - 1];
+  const y = r.year_to;
+  const total = all.find((x) => x.total);
+  const tail = total ? (az ? ` ${total.label}: ${v(r, total.value)}.` : ` ${total.label}: ${v(r, total.value)}.`) : "";
+  if (list.length === 1) return `${one(r, r.facts.find((f) => f.item_id === top.item_id) ?? r.facts[0])}${tail}`;
+  return (az
+    ? `${azOrdinal(y)} ildə ən yüksək göstərici: ${top.label} (${v(r, top.value)}), ən aşağı: ${bottom.label} (${v(r, bottom.value)}).`
+    : `In ${y}, the highest was ${top.label} (${v(r, top.value)}) and the lowest was ${bottom.label} (${v(r, bottom.value)}).`) + tail;
+}
+
 export function templateAnswer(r: Result): string {
+  if (r.plan.operation === "rank") return ranking(r);
   return r.facts.map((f) => one(r, f)).filter(Boolean).join(" ");
 }
