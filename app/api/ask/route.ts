@@ -28,6 +28,9 @@ export interface AskOk {
   year_to: number;
   source: Result["source"];
   data_as_of: string | null;
+  /** the plan that produced this answer, with the years actually used; drives share links and follow-ups */
+  plan?: Omit<Result["plan"], "answer_language"> & { answer_language?: Lang };
+  dataset_id?: string;
 }
 export interface AskFail {
   ok: false;
@@ -52,6 +55,8 @@ function ok(r: Result, answer: string, checked: boolean): AskOk {
     year_to: r.year_to,
     source: r.source,
     data_as_of: DATA_AS_OF,
+    plan: { ...r.plan, year_from: r.year_from, year_to: r.year_to },
+    dataset_id: r.dataset_id,
   };
 }
 
