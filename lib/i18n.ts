@@ -19,7 +19,7 @@ export const UI = {
     datasetsTitle: "Hazırda mövcud olan məlumatlar",
     privacyTitle: "Məxfilik",
     privacy:
-      "Hesab və ya şəxsi məlumat tələb olunmur. Sualınız cavab hazırlamaq üçün süni intellekt xidmətinə göndərilir və saxlanılmır. Şəxsi məlumat yazmayın.",
+      "Hesab və ya şəxsi məlumat tələb olunmur. Sualınız cavab hazırlamaq üçün süni intellekt xidmətinə (Google Gemini) göndərilir; DataDanış onu saxlamır. Şəxsi məlumat yazmayın.",
     credit: "Məlumatlar: Azərbaycan Respublikasının Dövlət Statistika Komitəsi, opendata.az (CC0).",
     builtBy: "Müəllif: Samur Eyyubov",
     disclaimer: "Cavablar yalnız göstərilən rəsmi cədvələ əsaslanır. Vacib qərarlar üçün mənbəni yoxlayın.",
@@ -43,7 +43,7 @@ export const UI = {
     datasetsTitle: "Data available now",
     privacyTitle: "Privacy",
     privacy:
-      "No account or personal data is needed. Your question is sent to an AI service to prepare the answer and is not stored. Please don't type personal information.",
+      "No account or personal data is needed. Your question is sent to an AI service (Google Gemini) to prepare the answer; DataDanış does not store it. Please don't type personal information.",
     credit: "Data: State Statistics Committee of the Republic of Azerbaijan, via opendata.az (CC0).",
     builtBy: "Made by Samur Eyyubov",
     disclaimer: "Answers are based only on the official table shown. Check the source before important decisions.",

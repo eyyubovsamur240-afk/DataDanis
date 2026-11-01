@@ -2,8 +2,8 @@
 //   1. plan():   question → constrained query plan (structured output)
 //   2. write():  computed result → 1–3 sentence answer, checked number by number
 import "server-only";
-import Anthropic from "@anthropic-ai/sdk";
-import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
+import { GoogleGenAI, ApiError, FinishReason } from "@google/genai";
+import { z } from "zod";
 import { catalogForPrompt, DATASETS, type Lang } from "./catalog";
 import { PlanSchema, type Plan } from "./plan";
 import { allowedNumbers, type Result } from "./executor";
@@ -11,14 +11,51 @@ import { unbackedNumbers } from "./numbercheck";
 import { templateAnswer } from "./templates";
 import { fmt, fmtPct } from "./format";
 
-export const MODEL = process.env.LLM_MODEL || "claude-sonnet-5-5";
+export const MODEL = process.env.LLM_MODEL || "gemini-3.6-flash";
+// Used when the main model is overloaded or slow (503/504/timeout).
+export const FALLBACK_MODEL = process.env.LLM_FALLBACK_MODEL || "gemini-3.5-flash-lite";
 
-let client: Anthropic | null = null;
-function getClient(): Anthropic {
-  // One client per server instance. Reads ANTHROPIC_API_KEY from the environment.
-  client ??= new Anthropic({ timeout: 30_000, maxRetries: 2 });
+let client: GoogleGenAI | null = null;
+function getClient(): GoogleGenAI {
+  // One client per server instance. The key comes from GEMINI_API_KEY in the environment.
+  // Short timeout and no SDK retries: we retry once on the fallback model instead,
+  // so the whole request stays inside Vercel's time limit.
+  client ??= new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY,
+    httpOptions: { timeout: 12_000, retryOptions: { attempts: 1 } },
+  });
   return client;
 }
+
+type GenConfig = NonNullable<Parameters<GoogleGenAI["models"]["generateContent"]>[0]["config"]>;
+
+// Fast answers: no long thinking. 2.x models take a token budget; newer ones a level.
+function thinking(model: string): GenConfig["thinkingConfig"] {
+  return /gemini-2\./.test(model) ? { thinkingBudget: 0 } : { thinkingLevel: "LOW" as never };
+}
+
+function retryable(err: unknown): boolean {
+  if (err instanceof ApiError) return err.status === 429 || err.status >= 500;
+  return true; // timeouts and network errors
+}
+
+/** Calls the main model, and the fallback model once if the main one is busy or slow. */
+async function generate(contents: string, config: GenConfig) {
+  try {
+    return await getClient().models.generateContent({ model: MODEL, contents, config: { ...config, thinkingConfig: thinking(MODEL) } });
+  } catch (err) {
+    if (!retryable(err) || FALLBACK_MODEL === MODEL) throw err;
+    console.warn("main model failed; trying fallback", err instanceof ApiError ? err.status : err);
+    return await getClient().models.generateContent({
+      model: FALLBACK_MODEL,
+      contents,
+      config: { ...config, thinkingConfig: thinking(FALLBACK_MODEL) },
+    });
+  }
+}
+
+// Plan JSON schema for the model, built once from the zod schema.
+const PLAN_JSON_SCHEMA = z.toJSONSchema(PlanSchema, { target: "draft-7" });
 
 export class AiUnavailable extends Error {
   constructor(public readonly kind: "busy" | "ai_unavailable", cause?: unknown) {
@@ -27,13 +64,10 @@ export class AiUnavailable extends Error {
 }
 
 function mapError(err: unknown): never {
-  if (err instanceof Anthropic.RateLimitError) throw new AiUnavailable("busy", err);
-  if (err instanceof Anthropic.AuthenticationError || err instanceof Anthropic.PermissionDeniedError) {
-    console.error("AI auth problem — check ANTHROPIC_API_KEY", err.status);
-    throw new AiUnavailable("ai_unavailable", err);
-  }
-  if (err instanceof Anthropic.APIError) {
-    console.error("AI API error", err.status, err.message);
+  if (err instanceof ApiError) {
+    if (err.status === 429) throw new AiUnavailable("busy", err);
+    if (err.status === 400 || err.status === 401 || err.status === 403) console.error("AI request or key problem — check GEMINI_API_KEY and LLM_MODEL", err.status, err.message);
+    else console.error("AI API error", err.status, err.message);
     throw new AiUnavailable("ai_unavailable", err);
   }
   console.error("AI call failed", err);
@@ -42,7 +76,7 @@ function mapError(err: unknown): never {
 
 const latestYear = Math.max(...DATASETS.map((d) => d.year_max));
 
-// Frozen system prompt (no dates or per-request values) so it is cached.
+// Fixed system prompt (no dates or per-request values).
 const PLANNER_SYSTEM = `You are the query planner for DataDanış, a public website that answers questions about official Azerbaijani statistics (State Statistics Committee data published on opendata.az).
 
 Your only job is to turn the user's question into a query plan. You never calculate or state numbers yourself; code computes everything from the data.
@@ -74,32 +108,40 @@ Examples:
 - "Bakıda çörəyin qiyməti nə qədərdir?" → can_answer false, dataset_id "none" (no city or product prices)
 - "Сколько разводов было в 2024 году?" → DT_AA_006, items ["002"], value, year_to 2024, kpi, az`;
 
+function noPlan(question: string): Plan {
+  return {
+    can_answer: false,
+    reason: "no plan",
+    answer_language: /[əğıöüçş]/i.test(question) ? "az" : "en",
+    dataset_id: "none",
+    item_ids: [],
+    operation: "value",
+    year_from: null,
+    year_to: null,
+    extreme: null,
+    chart_type: "kpi",
+  };
+}
+
 export async function plan(question: string): Promise<Plan> {
+  let text: string | undefined;
   try {
-    const res = await getClient().messages.parse({
-      model: MODEL,
-      max_tokens: 4000,
-      system: [{ type: "text", text: PLANNER_SYSTEM, cache_control: { type: "ephemeral" } }],
-      output_config: { effort: "low", format: zodOutputFormat(PlanSchema) },
-      messages: [{ role: "user", content: question }],
+    const res = await generate(question, {
+      systemInstruction: PLANNER_SYSTEM,
+      responseMimeType: "application/json",
+      responseJsonSchema: PLAN_JSON_SCHEMA,
+      maxOutputTokens: 2000,
     });
-    if (res.stop_reason === "refusal" || !res.parsed_output) {
-      return {
-        can_answer: false,
-        reason: "no plan",
-        answer_language: /[əğıöüçş]/i.test(question) ? "az" : "en",
-        dataset_id: "none",
-        item_ids: [],
-        operation: "value",
-        year_from: null,
-        year_to: null,
-        extreme: null,
-        chart_type: "kpi",
-      };
-    }
-    return res.parsed_output;
+    text = res.text;
   } catch (err) {
     mapError(err);
+  }
+  if (!text) return noPlan(question);
+  try {
+    const parsed = PlanSchema.safeParse(JSON.parse(text));
+    return parsed.success ? parsed.data : noPlan(question);
+  } catch {
+    return noPlan(question);
   }
 }
 
@@ -108,7 +150,7 @@ const WRITER_SYSTEM = `You write the answer text for DataDanış, a website abou
 You get the user's question and a result table that code has already computed. Write 1–3 short, plain sentences that answer the question for an ordinary citizen.
 
 Rules:
-- Write in the requested language only (az = Azerbaijani in Latin script, en = English).
+- Write in the requested language only (az = Azerbaijani in Latin script with ə, ğ, ı, ö, ü, ç, ş; en = English). Never use Turkish spellings or words from any other language or script.
 - Use only numbers from the "numbers you may use" list, copied exactly as written there (same formatting, same decimals). Never calculate, round, convert units, or estimate anything yourself.
 - Say which year(s) the numbers are for. If the data ends before "now", say that the latest available year is shown.
 - If the result only partly answers the question, say what it does show.
@@ -148,19 +190,15 @@ export async function write(question: string, r: Result): Promise<{ text: string
     `Numbers you may use:\n${numbersForWriter(r).map((l) => `- ${l}`).join("\n")}`,
   ].join("\n");
   try {
-    const res = await getClient().messages.create({
-      model: MODEL,
-      max_tokens: 4000,
-      system: [{ type: "text", text: WRITER_SYSTEM, cache_control: { type: "ephemeral" } }],
-      output_config: { effort: "low" },
-      messages: [{ role: "user", content: payload }],
-    });
-    if (res.stop_reason !== "end_turn") return { text: fallback, checked: false };
-    const text = res.content
-      .flatMap((b) => (b.type === "text" ? [b.text] : []))
-      .join(" ")
-      .trim();
+    const res = await generate(payload, { systemInstruction: WRITER_SYSTEM, maxOutputTokens: 1000 });
+    if (res.candidates?.[0]?.finishReason !== FinishReason.STOP) return { text: fallback, checked: false };
+    const text = (res.text ?? "").trim();
     if (!text) return { text: fallback, checked: false };
+    // Answers are Latin-script only. Smaller models sometimes slip in a word in another script.
+    if (/[^\p{Script=Latin}\p{Script=Common}\p{M}]/u.test(text)) {
+      console.warn("Answer has non-Latin characters; using template");
+      return { text: fallback, checked: false };
+    }
     const bad = unbackedNumbers(text, allowedNumbers(r));
     if (bad.length) {
       console.warn("Answer failed the number check; using template", bad);
@@ -169,7 +207,7 @@ export async function write(question: string, r: Result): Promise<{ text: string
     return { text, checked: true };
   } catch (err) {
     // The numbers are already computed, so a failed second call still gets an answer.
-    console.error("writer call failed; using template", err instanceof Anthropic.APIError ? err.status : err);
+    console.error("writer call failed; using template", err instanceof ApiError ? err.status : err);
     return { text: fallback, checked: false };
   }
 }
