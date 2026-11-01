@@ -19,6 +19,8 @@ export interface Point {
 export interface SeriesOut {
   item_id: string;
   label: string;
+  /** whole-country / world row in a ranking (drawn in grey) */
+  total?: boolean;
   points: Point[];
 }
 
@@ -55,7 +57,9 @@ export interface Result {
   series: SeriesOut[];
   facts: ItemFacts[];
   chart: ChartSpec;
-  source: { title: string; url: string };
+  source: { title: string; url: string; name: string };
+  /** operation=rank: items sorted from highest to lowest in year_to */
+  ranking?: { item_id: string; label: string; value: number; total: boolean }[];
 }
 
 export interface Failure {
@@ -67,6 +71,8 @@ export interface Failure {
 }
 
 const MAX_ITEMS = 4;
+/** rank compares every item of a table (15 regions, 8 countries) in one year */
+const MAX_RANK_ITEMS = 20;
 
 function displayUnit(ds: Dataset, lang: Lang): string {
   if (ds.value_kind === "index_prev_year_100") {
@@ -89,7 +95,9 @@ export function execute(plan: Plan, langOverride?: Lang): Result | Failure {
   const ds = getDataset(plan.dataset_id);
   if (!ds) return { ok: false, lang, reason: "unknown_dataset" };
 
-  const itemIds = [...new Set(plan.item_ids.length ? plan.item_ids : [ds.default_item])].slice(0, MAX_ITEMS);
+  const rank = plan.operation === "rank";
+  const requested = plan.item_ids.length ? plan.item_ids : rank ? Object.keys(ds.items) : [ds.default_item];
+  const itemIds = [...new Set(requested)].slice(0, rank ? MAX_RANK_ITEMS : MAX_ITEMS);
   if (itemIds.some((id) => !(id in ds.items))) {
     return { ok: false, lang, reason: "unknown_item", detail: { dataset_title: title(ds, lang) } };
   }
@@ -100,7 +108,7 @@ export function execute(plan: Plan, langOverride?: Lang): Result | Failure {
   const minY = covered[0];
   const maxY = covered[covered.length - 1];
 
-  const single = plan.operation === "value" || (plan.operation === "compare" && plan.year_from === null);
+  const single = plan.operation === "value" || rank || (plan.operation === "compare" && plan.year_from === null);
   let yearTo = plan.year_to ?? (single ? plan.year_from ?? maxY : maxY);
   let yearFrom = single ? yearTo : plan.year_from ?? minY;
   if (yearFrom > yearTo) [yearFrom, yearTo] = [yearTo, yearFrom];
@@ -153,7 +161,22 @@ export function execute(plan: Plan, langOverride?: Lang): Result | Failure {
     return f;
   });
 
+  // rank: one year, items sorted from highest to lowest. A whole-country row
+  // (Azerbaijan total, world average) stays in the chart for reference.
+  let ranking: Result["ranking"];
+  if (rank) {
+    ranking = series
+      .filter((s) => s.points.length)
+      .map((s) => ({ item_id: s.item_id, label: s.label, value: s.points[s.points.length - 1].value, total: ds.totals.includes(s.item_id) }))
+      .sort((a, b) => b.value - a.value);
+    const order = new Map(ranking.map((r, i) => [r.item_id, i]));
+    series.sort((a, b) => (order.get(a.item_id) ?? 99) - (order.get(b.item_id) ?? 99));
+    for (const s of series) if (ds.totals.includes(s.item_id)) s.total = true;
+    facts.sort((a, b) => (order.get(a.item_id) ?? 99) - (order.get(b.item_id) ?? 99));
+  }
+
   let chartType = plan.chart_type;
+  if (rank && chartType !== "table") chartType = "bar";
   const nPoints = Math.max(...series.map((s) => s.points.length));
   if (nPoints === 1 && (chartType === "line" || chartType === "bar")) chartType = series.length > 1 ? "bar" : "kpi";
   if (nPoints > 1 && chartType === "kpi") chartType = "line";
@@ -171,7 +194,8 @@ export function execute(plan: Plan, langOverride?: Lang): Result | Failure {
     series,
     facts,
     chart: { type: chartType, title: title(ds, lang), unit: displayUnit(ds, lang), series },
-    source: { title: title(ds, lang), url: ds.source_url },
+    source: { title: title(ds, lang), url: ds.source_url, name: ds.source_name },
+    ranking,
   };
 }
 
@@ -184,6 +208,7 @@ export function allowedNumbers(r: Result): number[] {
     for (const p of [f.from, f.to, f.max, f.min]) if (p) nums.push(p.year, p.value);
   }
   nums.push(r.year_from, r.year_to, r.year_to - r.year_from, r.year_to - r.year_from + 1);
+  if (r.ranking) nums.push(r.ranking.length, r.ranking.filter((x) => !x.total).length);
   // differences between items in the same year (e.g. "women live 4.4 years longer")
   if (r.facts.length === 2 && r.facts[0].to && r.facts[1].to && r.facts[0].to.year === r.facts[1].to.year) {
     nums.push(round(r.facts[0].to.value - r.facts[1].to.value, 2));

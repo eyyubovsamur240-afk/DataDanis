@@ -21,7 +21,7 @@ export function decodePlan(s: string): PlanInput | null {
     reason: "shared link",
     answer_language: "az",
     dataset_id,
-    item_ids: (items ?? "").split(/[_+ ,]/).filter(Boolean).slice(0, 4),
+    item_ids: (items ?? "").split(/[_+ ,]/).filter(Boolean).slice(0, operation === "rank" ? 20 : 4),
     operation,
     year_from: num(yf),
     year_to: num(yt),

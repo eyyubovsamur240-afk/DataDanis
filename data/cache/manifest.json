@@ -1,5 +1,9 @@
 {
   "fetched_at": "2026-11-01",
-  "source": "https://www.azstat.gov.az/AsisOpenDataApi/data?table_id={ID}&lang=az",
-  "note": "Raw azstat JSON snapshots. Refresh with `npm run fetch-data` from a computer in Azerbaijan, then `npm run data`."
+  "sources": {
+    "azstat": "https://www.azstat.gov.az/AsisOpenDataApi/data?table_id={ID}&lang=az (CC0, via opendata.az)",
+    "worldbank": "https://api.worldbank.org/v2/country/{ISO3;...}/indicator/{CODE}?format=json (CC BY 4.0)",
+    "cbar": "https://www.cbar.az/currencies/{DD.MM.YYYY}.xml (official rates; the app reads it live, this copy is the fallback)"
+  },
+  "note": "Raw snapshots. Refresh with `npm run fetch-data` from a computer in Azerbaijan, then `npm run data`."
 }

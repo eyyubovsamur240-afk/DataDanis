@@ -64,4 +64,40 @@ export const EXAMPLES: Example[] = [
       chart_type: "bar",
     },
   },
+  {
+    id: "regions",
+    question: {
+      az: "Hansı iqtisadi rayonda orta maaş ən yüksəkdir?",
+      en: "Which economic region has the highest average wage?",
+    },
+    plan: {
+      can_answer: true,
+      reason: "Regional wage ranking, latest year",
+      dataset_id: "DT_AB_080",
+      item_ids: [],
+      operation: "rank",
+      year_from: null,
+      year_to: null,
+      extreme: "max",
+      chart_type: "bar",
+    },
+  },
+  {
+    id: "neighbours",
+    question: {
+      az: "Adambaşına ÜDM: Azərbaycan qonşularla müqayisədə",
+      en: "GDP per person: Azerbaijan next to its neighbours",
+    },
+    plan: {
+      can_answer: true,
+      reason: "World Bank GDP per capita, AZ vs GE, AM, KZ",
+      dataset_id: "WB_GDP_PC",
+      item_ids: ["AZE", "GEO", "ARM", "KAZ"],
+      operation: "trend",
+      year_from: 2010,
+      year_to: null,
+      extreme: null,
+      chart_type: "line",
+    },
+  },
 ];

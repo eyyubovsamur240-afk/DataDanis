@@ -13,7 +13,11 @@ export interface Dataset {
   unit_en: string;
   value_kind: "level" | "index_prev_year_100";
   default_item: string;
+  /** whole-country / world rows: kept in rankings for reference, never "highest" */
+  totals: string[];
   notes: string | null;
+  /** shown as the source badge: "opendata.az" or "World Bank" */
+  source_name: string;
   source_url: string;
   data_url: string;
   year_min: number;

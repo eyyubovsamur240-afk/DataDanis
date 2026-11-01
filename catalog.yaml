@@ -210,3 +210,261 @@ datasets:
       "003": {az: "Hər 100 000 nəfərə düşən cinayətlər", en: "Crimes per 100,000 people"}
       "004": {az: "Cinayət törətmiş şəxslər", en: "People who committed crimes"}
     notes: The uploaded CSV on opendata.az is actually the fires table; only the azstat API data is used.
+
+  # ── Regional tables (added 1 Nov 2026) ────────────────────────────────────
+  # Items are the country total, Baku, Nakhchivan and the 12 economic regions
+  # ("- cəmi" rows). The district rows inside each region are not exposed.
+
+  - id: DT_AB_080
+    totals: ["001"]   # whole-country row: shown in rankings, never called "highest"
+    title_az: Orta aylıq nominal əməkhaqqı, iqtisadi rayonlar üzrə
+    title_en: Average monthly nominal wage, by economic region
+    synonyms: [maaş, əməkhaqqı, regional maaş, salary, wage, regional wages, region, regions, economic region, rayon, rayonlar, iqtisadi rayon, bölgə, Bakı, Baku, Gəncə, Ganja, Lənkəran, Şəki, Quba, Qarabağ, Naxçıvan, Nakhchivan]
+    unit_az: manat
+    unit_en: manat
+    value_kind: level
+    slug: i-qtisadi-rayonlar-ve-inzibati-erazi-vahidleri-uzre-orta-ayliq-nominal-emekhaqqi-manat
+    default_item: "001"
+    items:
+      "001": {az: "Azərbaycan Respublikası (ölkə üzrə)", en: "Azerbaijan (whole country)"}
+      "002": {az: "Bakı şəhəri", en: "Baku city"}
+      "003": {az: "Naxçıvan Muxtar Respublikası", en: "Nakhchivan Autonomous Republic"}
+      "004": {az: "Abşeron-Xızı iqtisadi rayonu", en: "Absheron-Khizi economic region"}
+      "009": {az: "Dağlıq Şirvan iqtisadi rayonu", en: "Mountainous Shirvan economic region"}
+      "015": {az: "Gəncə-Daşkəsən iqtisadi rayonu", en: "Ganja-Dashkasan economic region"}
+      "023": {az: "Qarabağ iqtisadi rayonu", en: "Karabakh economic region"}
+      "035": {az: "Qazax-Tovuz iqtisadi rayonu", en: "Gazakh-Tovuz economic region"}
+      "042": {az: "Quba-Xaçmaz iqtisadi rayonu", en: "Guba-Khachmaz economic region"}
+      "049": {az: "Lənkəran-Astara iqtisadi rayonu", en: "Lankaran-Astara economic region"}
+      "057": {az: "Mərkəzi Aran iqtisadi rayonu", en: "Central Aran economic region"}
+      "066": {az: "Mil-Muğan iqtisadi rayonu", en: "Mil-Mughan economic region"}
+      "072": {az: "Şəki-Zaqatala iqtisadi rayonu", en: "Shaki-Zagatala economic region"}
+      "080": {az: "Şərqi Zəngəzur iqtisadi rayonu", en: "East Zangezur economic region"}
+      "087": {az: "Şirvan-Salyan iqtisadi rayonu", en: "Shirvan-Salyan economic region"}
+    notes: Ends in 2024. The 2024 country figure (1009.4) matches DT_AB_036.
+
+  - id: DT_AB_076
+    totals: ["001"]   # whole-country row: shown in rankings, never called "highest"
+    title_az: İşsizlik səviyyəsi, iqtisadi rayonlar üzrə
+    title_en: Unemployment rate, by economic region
+    synonyms: [işsizlik, işsizlik səviyyəsi, unemployment rate, jobless, region, regions, economic region, rayon, rayonlar, iqtisadi rayon, bölgə, Bakı, Baku, Gəncə, Ganja, Lənkəran, Şəki, Quba, Qarabağ, Naxçıvan, Nakhchivan]
+    unit_az: faiz
+    unit_en: percent
+    value_kind: level
+    slug: i-qtisadi-rayonlar-ve-inzibati-erazi-vahidleri-uzre-ehalinin-issizlik-seviyyesi-faizle
+    default_item: "001"
+    items:
+      "001": {az: "Azərbaycan Respublikası (ölkə üzrə)", en: "Azerbaijan (whole country)"}
+      "002": {az: "Bakı şəhəri", en: "Baku city"}
+      "003": {az: "Naxçıvan Muxtar Respublikası", en: "Nakhchivan Autonomous Republic"}
+      "004": {az: "Abşeron-Xızı iqtisadi rayonu", en: "Absheron-Khizi economic region"}
+      "009": {az: "Dağlıq Şirvan iqtisadi rayonu", en: "Mountainous Shirvan economic region"}
+      "015": {az: "Gəncə-Daşkəsən iqtisadi rayonu", en: "Ganja-Dashkasan economic region"}
+      "023": {az: "Qarabağ iqtisadi rayonu", en: "Karabakh economic region"}
+      "035": {az: "Qazax-Tovuz iqtisadi rayonu", en: "Gazakh-Tovuz economic region"}
+      "042": {az: "Quba-Xaçmaz iqtisadi rayonu", en: "Guba-Khachmaz economic region"}
+      "049": {az: "Lənkəran-Astara iqtisadi rayonu", en: "Lankaran-Astara economic region"}
+      "057": {az: "Mərkəzi Aran iqtisadi rayonu", en: "Central Aran economic region"}
+      "066": {az: "Mil-Muğan iqtisadi rayonu", en: "Mil-Mughan economic region"}
+      "072": {az: "Şəki-Zaqatala iqtisadi rayonu", en: "Shaki-Zagatala economic region"}
+      "080": {az: "Şərqi Zəngəzur iqtisadi rayonu", en: "East Zangezur economic region"}
+      "087": {az: "Şirvan-Salyan iqtisadi rayonu", en: "Shirvan-Salyan economic region"}
+
+  - id: DT_CC_005
+    totals: ["001"]   # whole-country row: shown in rankings, never called "highest"
+    title_az: Hər 100 nəfərə düşən internet istifadəçiləri, iqtisadi rayonlar üzrə
+    title_en: Internet users per 100 people, by economic region
+    synonyms: [internet, internet istifadəçiləri, rəqəmsal, internet users, online, digital, region, regions, economic region, rayon, rayonlar, iqtisadi rayon, bölgə, Bakı, Baku, Gəncə, Ganja, Lənkəran, Şəki, Quba, Qarabağ, Naxçıvan, Nakhchivan]
+    unit_az: nəfər (hər 100 nəfərə)
+    unit_en: users per 100 people
+    value_kind: level
+    slug: ehalinin-her-100-neferine-dusen-internet-istifadecilerinin-sayi
+    default_item: "001"
+    filter: {level_2_id: "001"}   # the table also splits men / women; keep the total
+    items:
+      "001": {az: "Azərbaycan Respublikası (ölkə üzrə)", en: "Azerbaijan (whole country)"}
+      "002": {az: "Bakı şəhəri", en: "Baku city"}
+      "003": {az: "Naxçıvan Muxtar Respublikası", en: "Nakhchivan Autonomous Republic"}
+      "004": {az: "Abşeron-Xızı iqtisadi rayonu", en: "Absheron-Khizi economic region"}
+      "005": {az: "Dağlıq Şirvan iqtisadi rayonu", en: "Mountainous Shirvan economic region"}
+      "006": {az: "Gəncə-Daşkəsən iqtisadi rayonu", en: "Ganja-Dashkasan economic region"}
+      "007": {az: "Qarabağ iqtisadi rayonu", en: "Karabakh economic region"}
+      "008": {az: "Qazax-Tovuz iqtisadi rayonu", en: "Gazakh-Tovuz economic region"}
+      "009": {az: "Quba-Xaçmaz iqtisadi rayonu", en: "Guba-Khachmaz economic region"}
+      "010": {az: "Lənkəran-Astara iqtisadi rayonu", en: "Lankaran-Astara economic region"}
+      "011": {az: "Mərkəzi Aran iqtisadi rayonu", en: "Central Aran economic region"}
+      "012": {az: "Mil-Muğan iqtisadi rayonu", en: "Mil-Mughan economic region"}
+      "013": {az: "Şəki-Zaqatala iqtisadi rayonu", en: "Shaki-Zagatala economic region"}
+      "014": {az: "Şərqi Zəngəzur iqtisadi rayonu", en: "East Zangezur economic region"}
+      "015": {az: "Şirvan-Salyan iqtisadi rayonu", en: "Shirvan-Salyan economic region"}
+    notes: Only 2022–2025. East Zangezur starts in 2023.
+
+  # ── National tables (added 1 Nov 2026) ────────────────────────────────────
+
+  - id: DT_CA_020
+    title_az: Yoxsulluq səviyyəsi
+    title_en: Poverty rate
+    synonyms: [yoxsulluq, kasıblıq, yoxsul, poverty, poor, бедность]
+    unit_az: əhalinin faizi
+    unit_en: percent of population
+    value_kind: level
+    slug: yoxsulluq-heddi-ve-yoxsullugun-seviyyesi-cins-ve-yasayis-yeri-uzre
+    default_item: "002"
+    items:
+      "002": {az: "Yoxsulluq səviyyəsi (ölkə üzrə)", en: "Poverty rate (whole country)"}
+      "003001": {az: "Kişilər arasında", en: "Among men"}
+      "003002": {az: "Qadınlar arasında", en: "Among women"}
+      "004001": {az: "Şəhər yerlərində", en: "In towns and cities"}
+      "004002": {az: "Kənd yerlərində", en: "In rural areas"}
+    notes: The men/women and town/rural splits start in 2011 and end in 2024.
+
+  - id: DT_CA_020_LINE
+    table: DT_CA_020
+    title_az: Yoxsulluq həddi (aylıq, adambaşına)
+    title_en: Poverty line (monthly, per person)
+    synonyms: [yoxsulluq həddi, minimum gəlir, poverty line, poverty threshold, черта бедности]
+    unit_az: manat
+    unit_en: manat
+    value_kind: level
+    slug: yoxsulluq-heddi-ve-yoxsullugun-seviyyesi-cins-ve-yasayis-yeri-uzre
+    default_item: "001"
+    items:
+      "001": {az: "Yoxsulluq həddi", en: "Poverty line"}
+
+  - id: DT_BH_011
+    title_az: Xarici ticarət (ixrac, idxal)
+    title_en: Foreign trade (exports and imports)
+    synonyms: [ixrac, idxal, xarici ticarət, ticarət, saldo, export, exports, import, imports, trade, trade balance, экспорт, импорт]
+    unit_az: milyon ABŞ dolları
+    unit_en: million US dollars
+    value_kind: level
+    slug: xarici-ticaret-dovriyyesinin-dinamikasi
+    default_item: "001001001"
+    items:
+      "001001001": {az: "Xarici ticarət dövriyyəsi", en: "Total foreign trade"}
+      "001001003": {az: "İxrac", en: "Exports"}
+      "001001002": {az: "İdxal", en: "Imports"}
+      "001001004": {az: "Saldo (ixrac minus idxal)", en: "Trade balance (exports minus imports)"}
+    notes: State Customs Committee figures (the table also has a statistics-based series and real growth indices, not used).
+
+  - id: DT_BD_001
+    title_az: Elektrik enerjisinin istehlakı
+    title_en: Electricity consumption
+    synonyms: [elektrik, enerji, işıq, istehlak, electricity, power, energy, электроэнергия]
+    unit_az: milyon kVt·saat
+    unit_en: million kWh
+    value_kind: level
+    slug: electricity-consumption
+    default_item: "001"
+    items:
+      "001": {az: "Elektrik enerjisinin istehlakı (itkilər istisna olmaqla)", en: "Electricity consumption (excluding losses)"}
+
+  # ── World Bank: Azerbaijan next to its neighbours (added 1 Nov 2026) ─────
+  # source: worldbank → snapshot data/cache/WB_<indicator>.json, items are
+  # ISO3 country codes. Licence CC BY 4.0, credit "World Bank".
+
+  - id: WB_GDP_PC
+    source: worldbank
+    indicator: NY.GDP.PCAP.CD
+    title_az: Adambaşına ÜDM, ölkələrin müqayisəsi
+    title_en: GDP per person, country comparison
+    notes: Current US dollars (not adjusted for prices).
+    synonyms: [adambaşına ÜDM, rifah, zənginlik, GDP per capita, wealth, income per person, ölkələr, müqayisə, digər ölkələr, qonşular, Gürcüstan, Türkiyə, Qazaxıstan, Rusiya, Ermənistan, Özbəkistan, dünya, countries, compare, neighbours, Georgia, Turkey, Kazakhstan, Russia, Armenia, Uzbekistan, world]
+    unit_az: ABŞ dolları
+    unit_en: US dollars
+    value_kind: level
+    default_item: "AZE"
+    totals: ["WLD"]
+    items:
+      "AZE": {az: "Azərbaycan", en: "Azerbaijan"}
+      "GEO": {az: "Gürcüstan", en: "Georgia"}
+      "ARM": {az: "Ermənistan", en: "Armenia"}
+      "TUR": {az: "Türkiyə", en: "Türkiye"}
+      "KAZ": {az: "Qazaxıstan", en: "Kazakhstan"}
+      "UZB": {az: "Özbəkistan", en: "Uzbekistan"}
+      "RUS": {az: "Rusiya", en: "Russia"}
+      "WLD": {az: "Dünya (orta)", en: "World (average)"}
+
+  - id: WB_INFLATION
+    source: worldbank
+    indicator: FP.CPI.TOTL.ZG
+    title_az: İnflyasiya, ölkələrin müqayisəsi
+    title_en: Inflation, country comparison
+    synonyms: [inflyasiya, qiymət artımı, inflation, prices, ölkələr, müqayisə, digər ölkələr, qonşular, Gürcüstan, Türkiyə, Qazaxıstan, Rusiya, Ermənistan, Özbəkistan, dünya, countries, compare, neighbours, Georgia, Turkey, Kazakhstan, Russia, Armenia, Uzbekistan, world]
+    unit_az: faiz (illik)
+    unit_en: percent a year
+    value_kind: level
+    default_item: "AZE"
+    totals: ["WLD"]
+    items:
+      "AZE": {az: "Azərbaycan", en: "Azerbaijan"}
+      "GEO": {az: "Gürcüstan", en: "Georgia"}
+      "ARM": {az: "Ermənistan", en: "Armenia"}
+      "TUR": {az: "Türkiyə", en: "Türkiye"}
+      "KAZ": {az: "Qazaxıstan", en: "Kazakhstan"}
+      "UZB": {az: "Özbəkistan", en: "Uzbekistan"}
+      "RUS": {az: "Rusiya", en: "Russia"}
+      "WLD": {az: "Dünya (orta)", en: "World (average)"}
+
+  - id: WB_UNEMPLOYMENT
+    source: worldbank
+    indicator: SL.UEM.TOTL.ZS
+    title_az: İşsizlik səviyyəsi, ölkələrin müqayisəsi
+    title_en: Unemployment rate, country comparison
+    synonyms: [işsizlik, unemployment, jobs, ölkələr, müqayisə, digər ölkələr, qonşular, Gürcüstan, Türkiyə, Qazaxıstan, Rusiya, Ermənistan, Özbəkistan, dünya, countries, compare, neighbours, Georgia, Turkey, Kazakhstan, Russia, Armenia, Uzbekistan, world]
+    unit_az: işçi qüvvəsinin faizi (BƏT modeli)
+    unit_en: percent of labour force (ILO estimate)
+    value_kind: level
+    default_item: "AZE"
+    totals: ["WLD"]
+    items:
+      "AZE": {az: "Azərbaycan", en: "Azerbaijan"}
+      "GEO": {az: "Gürcüstan", en: "Georgia"}
+      "ARM": {az: "Ermənistan", en: "Armenia"}
+      "TUR": {az: "Türkiyə", en: "Türkiye"}
+      "KAZ": {az: "Qazaxıstan", en: "Kazakhstan"}
+      "UZB": {az: "Özbəkistan", en: "Uzbekistan"}
+      "RUS": {az: "Rusiya", en: "Russia"}
+      "WLD": {az: "Dünya (orta)", en: "World (average)"}
+
+  - id: WB_LIFE_EXP
+    source: worldbank
+    indicator: SP.DYN.LE00.IN
+    title_az: Gözlənilən ömür uzunluğu, ölkələrin müqayisəsi
+    title_en: Life expectancy, country comparison
+    synonyms: [ömür uzunluğu, life expectancy, ölkələr, müqayisə, digər ölkələr, qonşular, Gürcüstan, Türkiyə, Qazaxıstan, Rusiya, Ermənistan, Özbəkistan, dünya, countries, compare, neighbours, Georgia, Turkey, Kazakhstan, Russia, Armenia, Uzbekistan, world]
+    unit_az: il
+    unit_en: years
+    value_kind: level
+    default_item: "AZE"
+    totals: ["WLD"]
+    items:
+      "AZE": {az: "Azərbaycan", en: "Azerbaijan"}
+      "GEO": {az: "Gürcüstan", en: "Georgia"}
+      "ARM": {az: "Ermənistan", en: "Armenia"}
+      "TUR": {az: "Türkiyə", en: "Türkiye"}
+      "KAZ": {az: "Qazaxıstan", en: "Kazakhstan"}
+      "UZB": {az: "Özbəkistan", en: "Uzbekistan"}
+      "RUS": {az: "Rusiya", en: "Russia"}
+      "WLD": {az: "Dünya (orta)", en: "World (average)"}
+
+  - id: WB_INTERNET
+    source: worldbank
+    indicator: IT.NET.USER.ZS
+    title_az: İnternet istifadəçiləri, ölkələrin müqayisəsi
+    title_en: Internet users, country comparison
+    synonyms: [internet, internet users, digital, ölkələr, müqayisə, digər ölkələr, qonşular, Gürcüstan, Türkiyə, Qazaxıstan, Rusiya, Ermənistan, Özbəkistan, dünya, countries, compare, neighbours, Georgia, Turkey, Kazakhstan, Russia, Armenia, Uzbekistan, world]
+    unit_az: əhalinin faizi
+    unit_en: percent of population
+    value_kind: level
+    default_item: "AZE"
+    totals: ["WLD"]
+    items:
+      "AZE": {az: "Azərbaycan", en: "Azerbaijan"}
+      "GEO": {az: "Gürcüstan", en: "Georgia"}
+      "ARM": {az: "Ermənistan", en: "Armenia"}
+      "TUR": {az: "Türkiyə", en: "Türkiye"}
+      "KAZ": {az: "Qazaxıstan", en: "Kazakhstan"}
+      "UZB": {az: "Özbəkistan", en: "Uzbekistan"}
+      "RUS": {az: "Rusiya", en: "Russia"}
+      "WLD": {az: "Dünya (orta)", en: "World (average)"}

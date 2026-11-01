@@ -27,29 +27,27 @@ The headline cards, example questions, follow-ups, explorer and share links all 
 
 ## Data
 
-The app covers 12 annual national tables from the State Statistics Committee (licence CC0):
+The app covers 24 datasets from three official sources.
 
-- inflation
-- population
-- exchange rates
-- employment and unemployment
-- wages by sector
-- income per person
-- GDP growth
-- life expectancy
-- births and deaths
-- marriages and divorces
-- tourism
-- crime
+**State Statistics Committee** (via opendata.az, licence CC0), 19 annual tables:
+
+- national: inflation, population, exchange rates, employment and unemployment, wages by sector, income per person, GDP growth, life expectancy, births and deaths, marriages and divorces, tourism, crime, poverty rate and poverty line, foreign trade (exports and imports), electricity consumption
+- by economic region (Baku, Nakhchivan and the 12 economic regions): average wage, unemployment rate, internet users
+
+**World Bank** (licence CC BY 4.0): GDP per person, inflation, unemployment, life expectancy and internet users for Azerbaijan, Georgia, Armenia, Türkiye, Kazakhstan, Uzbekistan, Russia and the world average.
+
+**Central Bank of Azerbaijan**: today's official exchange rates. The home page shows them with a manat converter, and questions like "dollar rate today?" are answered from them with no AI call. The server reads `https://www.cbar.az/currencies/DD.MM.YYYY.xml` at most once an hour; if it can't, it shows the bundled copy (`data/cache/cbar_latest.json`) with its date.
+
+Regional and country tables support rankings ("Which region pays the most?"): code sorts every region or country for one year and draws a bar chart. The whole-country row and the world average stay in the chart in grey and are never called the highest or lowest.
 
 - `catalog.yaml` is the hand-checked list of datasets and figures, with Azerbaijani and English names and known data traps.
-- `data/cache/` holds the raw JSON snapshots from `https://www.azstat.gov.az/AsisOpenDataApi/data?table_id=…`. The app never fetches data live.
+- `data/cache/` holds the raw JSON snapshots: azstat tables (`DT_…_az.json`), World Bank indicators (`WB_….json`) and the fallback CBAR rates. Statistics are never fetched live; only the exchange rates are.
 - `npm run data` builds `lib/generated/datasets.json` from both. It stops with an error if a figure in the catalog is missing from the data.
 
 **To refresh the data**, run this from a computer in Azerbaijan, since some servers abroad are blocked:
 
 ```bash
-npm run fetch-data   # downloads new snapshots into data/cache/
+npm run fetch-data   # downloads new azstat, World Bank and CBAR snapshots into data/cache/
 npm run data         # rebuilds and checks; read the ✓ lines
 npm test             # spot-checks published figures
 ```

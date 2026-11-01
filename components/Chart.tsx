@@ -32,6 +32,10 @@ export default function Chart({ spec, lang, pct, id }: { spec: ChartSpec; lang: 
       const grid = cssVar("--line", "#e5e7eb");
       const small = window.innerWidth < 560;
       const multiYear = spec.series.some((s) => s.points.length > 1);
+      // Many items in one year (a ranking of regions or countries): horizontal
+      // bars, highest at the top, so long names stay readable.
+      const horizontal = !multiYear && spec.series.length > 5;
+      const hs = [...spec.series].reverse();
       const label = (v: number) => (pct ? fmtPct(v, lang) : fmt(v, lang));
       const data = multiYear
         ? spec.series.map((s, i) => ({
@@ -46,7 +50,22 @@ export default function Chart({ spec, lang, pct, id }: { spec: ChartSpec; lang: 
             fillcolor: spec.series.length === 1 ? "rgba(14,124,102,0.08)" : undefined,
             hovertemplate: s.points.map((p) => `${p.year}: <b>${label(p.value)}</b><extra>${s.label}</extra>`),
           }))
-        : [
+        : horizontal
+          ? [
+              {
+                type: "bar" as const,
+                orientation: "h" as const,
+                // "Absheron-Khizi economic region" → "Absheron-Khizi": the title already says "by economic region"
+                y: hs.map((s) => s.label.replace(/\s+(economic region|iqtisadi rayonu)$/i, "")),
+                x: hs.map((s) => s.points[0]?.value ?? null),
+                marker: { color: hs.map((s) => (s.total ? "#9aa5b1" : COLORS[0])) },
+                text: hs.map((s) => (s.points[0] ? label(s.points[0].value) : "")),
+                textposition: "outside" as const,
+                cliponaxis: false,
+                hoverinfo: "skip" as const,
+              },
+            ]
+          : [
             {
               type: "bar" as const,
               x: spec.series.map((s) => s.label),
@@ -63,11 +82,25 @@ export default function Chart({ spec, lang, pct, id }: { spec: ChartSpec; lang: 
         data as never,
         {
           margin: { l: 8, r: 20, t: 16, b: 8 },
-          height: small ? 250 : 310,
+          height: horizontal ? Math.max(260, spec.series.length * (small ? 26 : 28) + 40) : small ? 250 : 310,
           showlegend: spec.series.length > 1 && multiYear,
           legend: { orientation: "h", y: -0.18, font: { size: 12 } },
-          yaxis: { automargin: true, separatethousands: true, ticksuffix: pct ? "%" : "", gridcolor: grid, zerolinecolor: grid, rangemode: spec.type === "bar" && !pct ? "tozero" : "normal" },
-          xaxis: { automargin: true, gridcolor: "rgba(0,0,0,0)", fixedrange: true },
+          yaxis: horizontal
+            ? { automargin: true, fixedrange: true, tickfont: { size: small ? 10 : 12 } }
+            : { automargin: true, separatethousands: true, ticksuffix: pct ? "%" : "", gridcolor: grid, zerolinecolor: grid, rangemode: spec.type === "bar" && !pct ? "tozero" : "normal" },
+          xaxis: horizontal
+            ? {
+                automargin: true,
+                separatethousands: true,
+                ticksuffix: pct ? "%" : "",
+                gridcolor: grid,
+                zerolinecolor: grid,
+                fixedrange: true,
+                // room for the value labels outside the longest bar
+                range: [Math.min(0, ...hs.map((s) => s.points[0]?.value ?? 0)) * 1.2, Math.max(0, ...hs.map((s) => s.points[0]?.value ?? 0)) * 1.2],
+                nticks: small ? 4 : 7,
+              }
+            : { automargin: true, gridcolor: "rgba(0,0,0,0)", fixedrange: true },
           separators: lang === "az" ? ", " : ".,",
           paper_bgcolor: "rgba(0,0,0,0)",
           plot_bgcolor: "rgba(0,0,0,0)",

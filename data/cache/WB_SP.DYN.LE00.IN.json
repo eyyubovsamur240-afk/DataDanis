@@ -1,0 +1,3340 @@
+[
+ {
+  "page": 1,
+  "pages": 1,
+  "per_page": 1000,
+  "total": 208,
+  "sourceid": "2",
+  "lastupdated": "2026-10-08"
+ },
+ [
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2024",
+   "value": 78.319512195122,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2023",
+   "value": 77.4658536585366,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2022",
+   "value": 74.7658536585366,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2021",
+   "value": 72.2780487804878,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2020",
+   "value": 73.3756097560976,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2019",
+   "value": 76.2219512195122,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2018",
+   "value": 75.619512195122,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2017",
+   "value": 75.2170731707317,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2016",
+   "value": 74.8682926829268,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2015",
+   "value": 74.8707317073171,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2014",
+   "value": 74.8731707317073,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2013",
+   "value": 74.6219512195122,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2012",
+   "value": 74.119512195122,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2011",
+   "value": 73.8170731707317,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2010",
+   "value": 73.1731707317073,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2009",
+   "value": 73.0731707317073,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2008",
+   "value": 73.0731707317073,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2007",
+   "value": 72.8731707317073,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2006",
+   "value": 72.8243902439025,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2005",
+   "value": 73.0756097560976,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2004",
+   "value": 73.0268292682927,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2003",
+   "value": 72.8268292682927,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2002",
+   "value": 72.8268292682927,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2001",
+   "value": 72.9756097560976,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AM",
+    "value": "Armenia"
+   },
+   "countryiso3code": "ARM",
+   "date": "2000",
+   "value": 72.8804878048781,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2024",
+   "value": 74.576,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2023",
+   "value": 74.429,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2022",
+   "value": 74.125,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2021",
+   "value": 70.999,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2020",
+   "value": 70.312,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2019",
+   "value": 73.29,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2018",
+   "value": 73.016,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2017",
+   "value": 72.694,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2016",
+   "value": 72.568,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2015",
+   "value": 72.349,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2014",
+   "value": 71.93,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2013",
+   "value": 71.485,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2012",
+   "value": 71.08,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2011",
+   "value": 70.565,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2010",
+   "value": 70.309,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2009",
+   "value": 69.874,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2008",
+   "value": 69.355,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2007",
+   "value": 68.659,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2006",
+   "value": 68.489,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2005",
+   "value": 67.71,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2004",
+   "value": 67.488,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2003",
+   "value": 67.036,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2002",
+   "value": 66.769,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2001",
+   "value": 66.043,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "AZ",
+    "value": "Azerbaijan"
+   },
+   "countryiso3code": "AZE",
+   "date": "2000",
+   "value": 65.377,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2024",
+   "value": 74.657,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2023",
+   "value": 74.496,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2022",
+   "value": 74.141,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2021",
+   "value": 71.635,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2020",
+   "value": 73.509,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2019",
+   "value": 74.165,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2018",
+   "value": 73.985,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2017",
+   "value": 73.435,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2016",
+   "value": 73.136,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2015",
+   "value": 73.241,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2014",
+   "value": 73.105,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2013",
+   "value": 73.025,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2012",
+   "value": 72.672,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2011",
+   "value": 72.485,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2010",
+   "value": 71.732,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2009",
+   "value": 71.058,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2008",
+   "value": 70.949,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2007",
+   "value": 70.985,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2006",
+   "value": 70.983,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2005",
+   "value": 70.689,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2004",
+   "value": 71.011,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2003",
+   "value": 71.377,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2002",
+   "value": 70.438,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2001",
+   "value": 70.371,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "GE",
+    "value": "Georgia"
+   },
+   "countryiso3code": "GEO",
+   "date": "2000",
+   "value": 70.091,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2024",
+   "value": 74.531,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2023",
+   "value": 74.402,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2022",
+   "value": 73.503,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2021",
+   "value": 70.131,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2020",
+   "value": 71.195,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2019",
+   "value": 73.658,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2018",
+   "value": 73.369,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2017",
+   "value": 72.996,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2016",
+   "value": 72.549,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2015",
+   "value": 72.024,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2014",
+   "value": 71.415,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2013",
+   "value": 70.719,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2012",
+   "value": 69.939,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2011",
+   "value": 69.108,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2010",
+   "value": 68.257,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2009",
+   "value": 67.46,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2008",
+   "value": 66.759,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2007",
+   "value": 66.18,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2006",
+   "value": 65.722,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2005",
+   "value": 65.356,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2004",
+   "value": 65.04,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2003",
+   "value": 64.753,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2002",
+   "value": 64.441,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2001",
+   "value": 64.108,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "KZ",
+    "value": "Kazakhstan"
+   },
+   "countryiso3code": "KAZ",
+   "date": "2000",
+   "value": 63.793,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2024",
+   "value": 73.4404878048781,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2023",
+   "value": 73.2546341463415,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2022",
+   "value": 72.5456097560976,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2021",
+   "value": 69.900243902439,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2020",
+   "value": 71.3387804878049,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2019",
+   "value": 73.0839024390244,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2018",
+   "value": 72.6621951219512,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2017",
+   "value": 72.4514634146342,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2016",
+   "value": 71.6512195121951,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2015",
+   "value": 71.1834146341463,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2014",
+   "value": 70.7436585365854,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2013",
+   "value": 70.5787804878049,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2012",
+   "value": 70.0721951219512,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2011",
+   "value": 69.6839024390244,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2010",
+   "value": 68.8412195121951,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2009",
+   "value": 68.6846341463415,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2008",
+   "value": 67.9492682926829,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2007",
+   "value": 67.5868292682927,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2006",
+   "value": 66.7275609756098,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2005",
+   "value": 65.529756097561,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2004",
+   "value": 65.4709756097561,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2003",
+   "value": 65.0275609756098,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2002",
+   "value": 65.1287804878049,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2001",
+   "value": 65.3834146341463,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "RU",
+    "value": "Russian Federation"
+   },
+   "countryiso3code": "RUS",
+   "date": "2000",
+   "value": 65.4836585365854,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2024",
+   "value": 77.421,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2023",
+   "value": 77.156,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2022",
+   "value": 77.591,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2021",
+   "value": 75.722,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2020",
+   "value": 76.525,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2019",
+   "value": 77.737,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2018",
+   "value": 77.454,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2017",
+   "value": 77.037,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2016",
+   "value": 76.595,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2015",
+   "value": 76.539,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2014",
+   "value": 76.452,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2013",
+   "value": 76.171,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2012",
+   "value": 75.552,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2011",
+   "value": 74.823,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2010",
+   "value": 74.964,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2009",
+   "value": 74.679,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2008",
+   "value": 74.38,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2007",
+   "value": 74.129,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2006",
+   "value": 73.804,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2005",
+   "value": 73.51,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2004",
+   "value": 73.223,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2003",
+   "value": 72.906,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2002",
+   "value": 72.605,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2001",
+   "value": 72.271,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "TR",
+    "value": "Turkiye"
+   },
+   "countryiso3code": "TUR",
+   "date": "2000",
+   "value": 71.931,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2024",
+   "value": 72.528,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2023",
+   "value": 72.388,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2022",
+   "value": 72.147,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2021",
+   "value": 71.681,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2020",
+   "value": 71.461,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2019",
+   "value": 72.093,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2018",
+   "value": 71.999,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2017",
+   "value": 71.737,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2016",
+   "value": 71.58,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2015",
+   "value": 71.33,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2014",
+   "value": 70.973,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2013",
+   "value": 70.692,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2012",
+   "value": 70.411,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2011",
+   "value": 70.143,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2010",
+   "value": 69.836,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2009",
+   "value": 69.517,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2008",
+   "value": 69.035,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2007",
+   "value": 68.483,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2006",
+   "value": 67.905,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2005",
+   "value": 67.481,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2004",
+   "value": 67.203,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2003",
+   "value": 66.852,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2002",
+   "value": 66.376,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2001",
+   "value": 65.853,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "UZ",
+    "value": "Uzbekistan"
+   },
+   "countryiso3code": "UZB",
+   "date": "2000",
+   "value": 65.456,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2025",
+   "value": null,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2024",
+   "value": 73.4818184164654,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2023",
+   "value": 73.3302230276375,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2022",
+   "value": 72.9689585478052,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2021",
+   "value": 71.2160780260296,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2020",
+   "value": 72.1832040176208,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2019",
+   "value": 72.869911203356,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2018",
+   "value": 72.6442408544831,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2017",
+   "value": 72.3662967648278,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2016",
+   "value": 72.1858228976021,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2015",
+   "value": 71.9656376386893,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2014",
+   "value": 71.7763867362612,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2013",
+   "value": 71.5334887297047,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2012",
+   "value": 71.2645542969028,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2011",
+   "value": 70.9688028224075,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2010",
+   "value": 70.6826307784169,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2009",
+   "value": 70.3803491247646,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2008",
+   "value": 70.0043236169628,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2007",
+   "value": 69.8049778312625,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2006",
+   "value": 69.4690022328376,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2005",
+   "value": 69.111445965915,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2004",
+   "value": 68.7710985282212,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2003",
+   "value": 68.5157832704694,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2002",
+   "value": 68.2313680755001,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2001",
+   "value": 67.9451852910729,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  },
+  {
+   "indicator": {
+    "id": "SP.DYN.LE00.IN",
+    "value": "Life expectancy at birth, total (years)"
+   },
+   "country": {
+    "id": "1W",
+    "value": "World"
+   },
+   "countryiso3code": "WLD",
+   "date": "2000",
+   "value": 67.650477873849,
+   "unit": "",
+   "obs_status": "",
+   "decimal": 0
+  }
+ ]
+]

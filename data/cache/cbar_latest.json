@@ -1,0 +1,91 @@
+{
+ "date": "30.10.2026",
+ "source_url": "https://www.cbar.az/currencies/30.10.2026.xml",
+ "note": "Fallback copy of the Central Bank of Azerbaijan official rates, used only when the live CBAR file can't be reached. Refreshed by `npm run fetch-data`.",
+ "rates": [
+  {
+   "code": "USD",
+   "nominal": 1,
+   "name_az": "ABŞ dolları",
+   "value": 1.7
+  },
+  {
+   "code": "EUR",
+   "nominal": 1,
+   "name_az": "Avro",
+   "value": 1.9019
+  },
+  {
+   "code": "RUB",
+   "nominal": 100,
+   "name_az": "Rusiya rublu",
+   "value": 2.0923
+  },
+  {
+   "code": "TRY",
+   "nominal": 1,
+   "name_az": "Türk lirəsi",
+   "value": 0.034
+  },
+  {
+   "code": "GBP",
+   "nominal": 1,
+   "name_az": "İngilis funt sterlinqi",
+   "value": 2.276
+  },
+  {
+   "code": "GEL",
+   "nominal": 1,
+   "name_az": "Gürcü larisi",
+   "value": 0.6551
+  },
+  {
+   "code": "CNY",
+   "nominal": 1,
+   "name_az": "Çin yuanı",
+   "value": 0.2553
+  },
+  {
+   "code": "KZT",
+   "nominal": 100,
+   "name_az": "Qazaxıstan tengəsi",
+   "value": 0.3753
+  },
+  {
+   "code": "AED",
+   "nominal": 1,
+   "name_az": "BƏƏ dirhəmi",
+   "value": 0.4628
+  },
+  {
+   "code": "JPY",
+   "nominal": 100,
+   "name_az": "Yapon yeni",
+   "value": 1.08
+  },
+  {
+   "code": "CHF",
+   "nominal": 1,
+   "name_az": "İsveçrə frankı",
+   "value": 2.0675
+  },
+  {
+   "code": "UAH",
+   "nominal": 1,
+   "name_az": "Ukrayna qrivnası",
+   "value": 0.0375
+  },
+  {
+   "code": "SAR",
+   "nominal": 1,
+   "name_az": "Səudiyyə Ərəbistanı rialı",
+   "value": 0.453
+  },
+  {
+   "code": "CAD",
+   "nominal": 1,
+   "name_az": "Kanada dolları",
+   "value": 1.2166
+  }
+ ]
+}

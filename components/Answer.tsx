@@ -28,7 +28,8 @@ export default function Answer({
   const chartId = `chart-${turnId}`;
   const years = [...new Set(reply.chart.series.flatMap((s) => s.points.map((p) => p.year)))].sort((a, b) => a - b);
   const show = (v: number | undefined) => (v === undefined ? "—" : pct ? fmtPct(v, reply.lang) : fmt(v, reply.lang));
-  const tableOpen = showTable || reply.chart.type === "table";
+  const hasRows = reply.chart.series.length > 0;
+  const tableOpen = hasRows && (showTable || reply.chart.type === "table");
   const hasPlot = reply.chart.type === "line" || reply.chart.type === "bar";
   const ds = reply.plan ? getDataset(reply.plan.dataset_id) : undefined;
   const fileBase = `datadanis-${reply.dataset_id ?? "data"}-${reply.year_from}-${reply.year_to}`;
@@ -93,14 +94,16 @@ export default function Answer({
       )}
 
       <div className="actions">
-        {reply.chart.type !== "table" && (
+        {hasRows && reply.chart.type !== "table" && (
           <button className="action" onClick={() => setShowTable(!showTable)} aria-pressed={showTable}>
             <Icon d="M3 5h18M3 12h18M3 19h18" /> {showTable ? t.hideTable : t.showTable}
           </button>
         )}
-        <button className="action" onClick={() => download(`${fileBase}.csv`, toCsv(reply.chart, t.year))}>
-          <Icon d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" /> {t.csv}
-        </button>
+        {hasRows && (
+          <button className="action" onClick={() => download(`${fileBase}.csv`, toCsv(reply.chart, t.year))}>
+            <Icon d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" /> {t.csv}
+          </button>
+        )}
         {hasPlot && (
           <button className="action" onClick={png}>
             <Icon d="M4 5h16v14H4zM8 13l3-3 5 6M15 9h.01" /> {t.png}
@@ -114,11 +117,11 @@ export default function Answer({
       </div>
 
       <p className="source">
-        <span className="badge-src">opendata.az</span>
+        <span className="badge-src">{reply.source.name ?? "opendata.az"}</span>
         <a href={reply.source.url} target="_blank" rel="noreferrer">
           {reply.source.title}
         </a>
-        {reply.data_as_of && <span className="muted"> · {t.dataAsOf}: {reply.data_as_of}</span>}
+        {reply.data_as_of && reply.kind !== "rates" && <span className="muted"> · {t.dataAsOf}: {reply.data_as_of}</span>}
       </p>
 
       {reply.plan && (
