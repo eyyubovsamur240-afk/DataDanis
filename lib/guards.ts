@@ -35,12 +35,25 @@ export function normaliseQuestion(q: string): string {
   return q.normalize("NFC").replace(/\s+/g, " ").trim();
 }
 
-// Small in-memory answer cache: identical questions skip both AI calls.
-const cache = new Map<string, unknown>();
-export function cached<T>(key: string): T | undefined {
-  return cache.get(key.toLocaleLowerCase("az")) as T | undefined;
+// In-memory answer cache: a repeated question skips both AI calls.
+// The key ignores case, punctuation and the special Azerbaijani letters, so
+// "Torpaq təyinatı?" and "torpaq teyinati" share one entry.
+const FOLD: Record<string, string> = { ə: "e", ı: "i", ğ: "g", ö: "o", ü: "u", ç: "c", ş: "s", i̇: "i" };
+export function cacheKey(q: string): string {
+  return q
+    .toLocaleLowerCase("az")
+    .replace(/[əığöüçş]|i̇/g, (c) => FOLD[c] ?? c)
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .trim();
 }
-export function remember(key: string, value: unknown) {
-  if (cache.size > 500) cache.delete(cache.keys().next().value as string);
-  cache.set(key.toLocaleLowerCase("az"), value);
+const MAX_CACHE = 3000;
+const cache = new Map<string, unknown>();
+export function cached<T>(q: string): T | undefined {
+  return cache.get(cacheKey(q)) as T | undefined;
+}
+export function remember(q: string, value: unknown) {
+  if (cache.size >= MAX_CACHE) cache.delete(cache.keys().next().value as string);
+  cache.set(cacheKey(q), value);
 }
