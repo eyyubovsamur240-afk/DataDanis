@@ -14,11 +14,14 @@ export default function Answer({
   reply,
   turnId,
   viaAi,
+  last,
   onFollow,
 }: {
   reply: AskOk;
   turnId: number;
   viaAi: boolean;
+  /** follow-up buttons are shown only under the latest answer */
+  last: boolean;
   onFollow: (label: string, plan: PlanInput) => void;
 }) {
   const t = UI[reply.lang];
@@ -149,7 +152,7 @@ export default function Answer({
         </details>
       )}
 
-      {reply.plan && (
+      {reply.plan && last && (
         <div className="followups">
           <span className="followups-label">{t.followUps}</span>
           <div className="chips">

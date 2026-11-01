@@ -15,6 +15,7 @@ If the data can't answer a question (for example, today's price of bread in Baku
 
 ## Features
 
+- **Chat**: the home page is a conversation. Ask, then follow up with short questions like "and for women?" or "last 5 years?". The previous question and its plan go to the planner as context, so a follow-up still takes one planning call and one writing call. The conversation is saved only in the browser (localStorage) and cleared with "New chat".
 - **Headline cards** on the home page: population, inflation, the dollar rate and the average wage, with the change on the previous year and a 10-year sparkline. Tap a card for the full chart.
 - **Share and download**: every answer has a share link, a CSV download and a chart image (PNG). A share link stores the query plan (for example `/?a=DT_BL_001.001.trend.2016-2025.line`), not the answer, so opening it recomputes the same numbers from the data with no AI call.
 - **"How was this calculated?"** under each answer: the official table and its id, the figures, the years, the operation, and whether the AI text passed the number check.

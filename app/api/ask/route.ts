@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { plan, write, AiUnavailable } from "@/lib/ai";
+import { plan, write, AiUnavailable, type ChatContext } from "@/lib/ai";
 import { execute, type Result } from "@/lib/executor";
+import { OPERATIONS } from "@/lib/plan";
 import { EXAMPLES } from "@/lib/examples";
 import { templateAnswer } from "@/lib/templates";
 import { errorMessage, type ErrorCode } from "@/lib/i18n";
@@ -18,6 +19,20 @@ const Body = z.object({
   question: z.string().optional(),
   example_id: z.string().optional(),
   lang: z.enum(["az", "en"]).default("az"),
+  /** the previous question and its plan, for follow-ups like "and for women?" */
+  context: z
+    .object({
+      question: z.string().max(300),
+      plan: z.object({
+        dataset_id: z.string().max(40),
+        item_ids: z.array(z.string().max(20)).max(12),
+        operation: z.enum(OPERATIONS),
+        year_from: z.number().int().nullable(),
+        year_to: z.number().int().nullable(),
+        extreme: z.enum(["max", "min"]).nullable().default(null),
+      }),
+    })
+    .optional(),
 });
 
 export interface AskOk {
@@ -126,7 +141,10 @@ export async function POST(req: Request) {
       if (res) return NextResponse.json(res);
     }
 
-    const hit = cached<AskOk | AskFail>(question);
+    const context: ChatContext | undefined = body.context;
+    // A follow-up depends on what came before, so the cache key includes the previous plan.
+    const key = context ? `${question} | ${JSON.stringify(context.plan)}` : question;
+    const hit = cached<AskOk | AskFail>(key);
     if (hit) return NextResponse.json({ ...hit, lang: hit.ok ? hit.lang : uiLang });
 
     const visitor = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "anon";
@@ -134,17 +152,17 @@ export async function POST(req: Request) {
     if (limit !== "ok") return fail(limit, uiLang);
 
     // 2. AI call 1: question → plan.  3. Code: plan → numbers.  4. AI call 2: numbers → words.
-    const p = await plan(question);
+    const p = await plan(question, context);
     const r = execute(p);
     if (!r.ok) {
       // Remember "not in the data" answers too, so the same question doesn't use the AI again.
       const res: AskFail = { ok: false, lang: r.lang, code: r.reason, message: errorMessage(r.reason, r.lang, r.detail) };
-      remember(question, res);
+      remember(key, res);
       return NextResponse.json(res);
     }
-    const { text, checked } = await write(question, r);
+    const { text, checked } = await write(context ? `${context.question} → ${question}` : question, r);
     const response = ok(r, text, checked);
-    remember(question, response);
+    remember(key, response);
     return NextResponse.json(response);
   } catch (err) {
     if (err instanceof AiUnavailable) return fail(err.kind, uiLang);

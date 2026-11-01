@@ -100,7 +100,13 @@ export default function Chart({ spec, lang, pct, id }: { spec: ChartSpec; lang: 
                 range: [Math.min(0, ...hs.map((s) => s.points[0]?.value ?? 0)) * 1.2, Math.max(0, ...hs.map((s) => s.points[0]?.value ?? 0)) * 1.2],
                 nticks: small ? 4 : 7,
               }
-            : { automargin: true, gridcolor: "rgba(0,0,0,0)", fixedrange: true },
+            : {
+                automargin: true,
+                gridcolor: "rgba(0,0,0,0)",
+                fixedrange: true,
+                // years are whole numbers: no "2 021,5" ticks and no thousands separator
+                ...(multiYear ? { tickformat: "d", ...(Math.max(...spec.series.map((s) => s.points.length)) <= 12 ? { dtick: 1 } : {}) } : {}),
+              },
           separators: lang === "az" ? ", " : ".,",
           paper_bgcolor: "rgba(0,0,0,0)",
           plot_bgcolor: "rgba(0,0,0,0)",
