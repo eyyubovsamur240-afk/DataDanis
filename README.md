@@ -54,9 +54,9 @@ npm test
 ## Deploy on Vercel
 
 1. Import this GitHub repo at [vercel.com/new](https://vercel.com/new). It detects Next.js; keep the default settings.
-2. Under **Settings → Environment Variables**, add `ANTHROPIC_API_KEY` and `LLM_MODEL` (see `.env.example`).
+2. Under **Settings → Environment Variables**, add `GEMINI_API_KEY` (from [Google AI Studio](https://aistudio.google.com/apikey)). `LLM_MODEL` and `LLM_FALLBACK_MODEL` are optional; the defaults are in `.env.example`.
 3. Deploy. Every push to `main` redeploys.
-4. Set a **monthly spend limit** in the AI provider's console. That is the real protection against abuse. The in-app limits (20 questions per visitor per hour, 1,500 per day) are soft, because each Vercel server instance counts separately.
+4. The free Gemini tier allows only about 5 requests a minute on the main model (each question uses 2). When it runs out, the app switches to the lighter fallback model, and the example questions never use the AI. For judging, turn on billing for the key and set a **monthly budget** in Google AI Studio / Google Cloud. That budget is the real protection against abuse. The in-app limits (20 questions per visitor per hour, 1,500 per day) are soft, because each Vercel server instance counts separately.
 
 ## MilliNet badge
 
@@ -68,7 +68,7 @@ The MilliNet rules require their badge on the home page. Copy the code from mill
 app/page.tsx          home page: examples, chat, chart, source, privacy note
 app/api/ask/route.ts  API: limits → plan → compute → explain
 components/Chart.tsx  Plotly chart (fixed code)
-lib/ai.ts             the two AI calls
+lib/ai.ts             the two AI calls (Gemini, with a fallback model)
 lib/executor.ts       validation + all calculations
 lib/numbercheck.ts    checks AI text against computed numbers
 lib/templates.ts      template answers (examples + fallback)
