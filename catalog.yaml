@@ -1,0 +1,212 @@
+# DataDanış dataset catalog — the hand-checked "semantic layer".
+#
+# Each dataset is keyed by its azstat table_id. Items are keyed by azstat
+# `level_1_id`, because item names repeat inside a table (e.g. "Kişilər"
+# appears under births AND deaths). Only items listed here are exposed.
+#
+# source_url  : the citizen-facing opendata.az page shown under every answer
+# data_url    : where scripts/fetch_data.py downloads the snapshot from
+# notes       : known traps, kept here so they are not forgotten
+#
+# Data snapshot fetched 2026-11-01 (see data/cache/manifest.json).
+
+datasets:
+
+  - id: DT_BL_001
+    title_az: İstehlak qiymətləri indeksi (inflyasiya), əvvəlki ilə nisbətən
+    title_en: Consumer price index (inflation), compared with the previous year
+    synonyms: [inflyasiya, qiymətlər, bahalıq, CPI, inflation, prices, инфляция, цены]
+    unit_az: faiz (əvvəlki il = 100)
+    unit_en: percent (previous year = 100)
+    value_kind: index_prev_year_100   # 105.6 means prices rose 5.6%
+    slug: consumer-price-index--year-on-year--in-percentage-
+    default_item: "001"
+    items:
+      "001": {az: "Ümumi istehlak qiymətləri indeksi", en: "Consumer price index (all items)"}
+      "002": {az: "Ərzaq məhsulları, içkilər, tütün", en: "Food, beverages and tobacco"}
+      "004": {az: "Qeyri-ərzaq məhsulları", en: "Non-food products"}
+      "006": {az: "Xidmətlər", en: "Services"}
+
+  - id: DT_AA_001
+    title_az: Əhalinin sayı (ilin əvvəlinə)
+    title_en: Population (at the start of the year)
+    synonyms: [əhali, nüfus, neçə nəfər, population, people, население]
+    unit_az: min nəfər
+    unit_en: thousand people
+    value_kind: level
+    slug: population--at-the-beginning-of-the-year-
+    default_item: "001"
+    items:
+      "001": {az: "Əhalinin sayı, cəmi", en: "Total population"}
+      "002": {az: "Şəhər əhalisi", en: "Urban population"}
+      "003": {az: "Kənd əhalisi", en: "Rural population"}
+      "004": {az: "Kişilər", en: "Men"}
+      "005": {az: "Qadınlar", en: "Women"}
+
+  - id: DT_BK_011
+    title_az: Manatın məzənnəsi (illik orta)
+    title_en: Manat exchange rate (annual average)
+    synonyms: [məzənnə, dollar, avro, rubl, kurs, exchange rate, USD, EUR, курс]
+    unit_az: manat
+    unit_en: manat
+    value_kind: level
+    slug: exchange-rate
+    default_item: "001"
+    items:
+      "001": {az: "ABŞ dolları", en: "US dollar"}
+      "002": {az: "Avro", en: "Euro"}
+      "003": {az: "Rusiya rublu", en: "Russian rouble"}
+    notes: Rouble is rounded to 0.01 in the source, so it is too coarse for trends.
+
+  - id: DT_AB_087
+    title_az: Məşğulluq və işsizlik (ilin sonuna)
+    title_en: Employment and unemployment (end of year)
+    synonyms: [işsizlik, iş, məşğulluq, işsiz, unemployment, jobs, employment, безработица]
+    unit_az: min nəfər
+    unit_en: thousand people
+    value_kind: level
+    slug: mesgulluq-ve-issizlik-ilin-sonuna-min-nefer
+    default_item: "007"
+    items:
+      "001": {az: "İşçi qüvvəsi", en: "Labour force"}
+      "004": {az: "Məşğul əhali", en: "Employed people"}
+      "007": {az: "İşsiz əhali", en: "Unemployed people"}
+      "008": {az: "İşsiz qadınlar", en: "Unemployed women"}
+      "009": {az: "İşsiz kişilər", en: "Unemployed men"}
+      "010": {az: "Qeydiyyata alınmış işsizlər", en: "Registered unemployed"}
+    notes: Only 2010, 2015 and 2020–2024 exist. Registered unemployed is empty for 2020–2022.
+
+  - id: DT_AB_036
+    title_az: Orta aylıq nominal əməkhaqqı (iqtisadi fəaliyyət növləri üzrə)
+    title_en: Average monthly nominal wage (by economic activity)
+    synonyms: [maaş, əməkhaqqı, əmək haqqı, gəlir, salary, wage, pay, зарплата]
+    unit_az: manat
+    unit_en: manat
+    value_kind: level
+    slug: muzdlu-iscilerin-iqtisadi-fealiyyet-ve-mulkiyyet-novleri-uzre-orta-ayliq-nominal-emekhaqqi
+    default_item: "001"
+    first_row_only: true
+    items:
+      "001": {az: "Bütün iqtisadiyyat üzrə", en: "Whole economy"}
+      "002": {az: "Kənd təsərrüfatı", en: "Agriculture, forestry and fishing"}
+      "003": {az: "Mədənçıxarma (neft-qaz)", en: "Mining (oil and gas)"}
+      "004": {az: "Emal sənayesi", en: "Manufacturing"}
+      "007": {az: "Tikinti", en: "Construction"}
+      "008": {az: "Ticarət", en: "Trade"}
+      "011": {az: "İnformasiya və rabitə", en: "Information and communication"}
+      "012": {az: "Maliyyə və sığorta", en: "Finance and insurance"}
+      "016": {az: "Dövlət idarəetməsi", en: "Public administration"}
+      "017": {az: "Təhsil", en: "Education"}
+      "018": {az: "Səhiyyə", en: "Health care"}
+    notes: >
+      The JSON drops the ownership dimension, so each sector and year has 3 rows
+      (all forms, then two ownership groups). We keep only the first row, which
+      matches the published national average (2024 = 1009.4 AZN). Re-check after
+      every data refresh.
+
+  - id: DT_CA_008
+    title_az: Əhalinin aylıq gəlirləri, adambaşına
+    title_en: Monthly income per person
+    synonyms: [gəlir, adambaşına gəlir, pensiya, income, per capita, pension, доход]
+    unit_az: manat
+    unit_en: manat
+    value_kind: level
+    slug: monthly-per-capita-income-of-the-population-in-the-country--in-manats
+    default_item: "001"
+    items:
+      "001": {az: "Bütün gəlirlər", en: "Total income"}
+      "002": {az: "Muzdlu işdən gəlir", en: "Income from paid work"}
+      "003": {az: "Özünüməşğulluqdan gəlir", en: "Income from self-employment"}
+      "008": {az: "Pensiyalar", en: "Pensions"}
+      "013": {az: "Xaricdən alınan vəsaitlər", en: "Money received from abroad"}
+
+  - id: DT_BA_006
+    title_az: ÜDM-in real artım sürəti (əvvəlki ilə nisbətən)
+    title_en: Real GDP growth (compared with the previous year)
+    synonyms: [ÜDM, iqtisadiyyat, iqtisadi artım, GDP, economy, growth, ВВП]
+    unit_az: faiz (əvvəlki il = 100)
+    unit_en: percent (previous year = 100)
+    value_kind: index_prev_year_100
+    slug: gdp-growth-rate-compared-to-the-previous-year--in-percent-
+    default_item: "001"
+    annual_only: true
+    items:
+      "001": {az: "ÜDM-in artım sürəti", en: "GDP growth"}
+    notes: The table mixes annual, quarterly and monthly rows; only annual (period_type Y) rows are used.
+
+  - id: DT_AA_011
+    title_az: Doğulanda gözlənilən ömür uzunluğu
+    title_en: Life expectancy at birth
+    synonyms: [ömür, ömür uzunluğu, yaşam, life expectancy, how long people live, продолжительность жизни]
+    unit_az: il
+    unit_en: years
+    value_kind: level
+    slug: dogulanda-gozlenilen-omur-uzunlugu
+    default_item: "001"
+    items:
+      "001": {az: "Hamısı", en: "Everyone"}
+      "002": {az: "Kişilər", en: "Men"}
+      "003": {az: "Qadınlar", en: "Women"}
+
+  - id: DT_AA_003
+    title_az: Doğulanlar, ölənlər, təbii artım
+    title_en: Births, deaths and natural increase
+    synonyms: [doğum, doğulan, ölüm, uşaq, körpə ölümü, births, deaths, babies, рождаемость, смертность]
+    unit_az: nəfər
+    unit_en: people
+    value_kind: level
+    slug: births--deaths--natural-increase--deaths-of-children-under-1-year-of-age
+    default_item: "006"
+    items:
+      "006": {az: "Doğulanlar", en: "Births"}
+      "011": {az: "Ölənlər", en: "Deaths"}
+      "001": {az: "Təbii artım", en: "Natural increase (births minus deaths)"}
+      "016": {az: "1 yaşadək ölən uşaqlar", en: "Deaths of children under 1"}
+      "009": {az: "Doğulan oğlanlar", en: "Boys born"}
+      "010": {az: "Doğulan qızlar", en: "Girls born"}
+
+  - id: DT_AA_006
+    title_az: Nikahlar və boşanmalar
+    title_en: Marriages and divorces
+    synonyms: [nikah, toy, evlilik, boşanma, marriage, divorce, брак, развод]
+    unit_az: say (əmsallar hər 1000 nəfərə)
+    unit_en: count (rates per 1,000 people)
+    value_kind: level
+    slug: nikah-ve-bosanma-uzre-illik-gostericiler
+    default_item: "002"
+    items:
+      "001": {az: "Nikahların sayı", en: "Number of marriages"}
+      "002": {az: "Boşanmaların sayı", en: "Number of divorces"}
+      "003": {az: "Nikah əmsalı (hər 1000 nəfərə)", en: "Marriage rate (per 1,000 people)"}
+      "004": {az: "Boşanma əmsalı (hər 1000 nəfərə)", en: "Divorce rate (per 1,000 people)"}
+
+  - id: DT_BO_005
+    title_az: Qəbul edilmiş və göndərilmiş turistlər
+    title_en: Tourists received and sent abroad
+    synonyms: [turist, turizm, səyahət, tourists, tourism, travel, туристы]
+    unit_az: nəfər
+    unit_en: people
+    value_kind: level
+    slug: number-of-tourists-received-and-sent
+    default_item: "002"
+    items:
+      "001": {az: "Cəmi turistlər", en: "All tourists"}
+      "002": {az: "Qəbul edilmiş turistlər", en: "Tourists received"}
+      "003": {az: "Xaricə göndərilmiş turistlər", en: "Tourists sent abroad"}
+    notes: Counts only tourists served by registered travel agencies, not all visitors.
+
+  - id: DT_AI_002
+    title_az: Cinayətkarlığın əsas göstəriciləri
+    title_en: Main crime indicators
+    synonyms: [cinayət, təhlükəsizlik, crime, safety, преступность]
+    unit_az: say
+    unit_en: count
+    value_kind: level
+    slug: main-indicators-of-crime-in-azerbaijan
+    default_item: "001"
+    items:
+      "001": {az: "Qeydə alınmış cinayətlər", en: "Registered crimes"}
+      "002": {az: "Ağır və xüsusilə ağır cinayətlər", en: "Serious and very serious crimes"}
+      "003": {az: "Hər 100 000 nəfərə düşən cinayətlər", en: "Crimes per 100,000 people"}
+      "004": {az: "Cinayət törətmiş şəxslər", en: "People who committed crimes"}
+    notes: The uploaded CSV on opendata.az is actually the fires table; only the azstat API data is used.

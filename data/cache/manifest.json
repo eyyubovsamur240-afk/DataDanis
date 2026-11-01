@@ -1,0 +1,5 @@
+{
+  "fetched_at": "2026-11-01",
+  "source": "https://www.azstat.gov.az/AsisOpenDataApi/data?table_id={ID}&lang=az",
+  "note": "Raw azstat JSON snapshots. Refresh with `npm run fetch-data` from a computer in Azerbaijan, then `npm run data`."
+}
