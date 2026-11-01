@@ -11,7 +11,19 @@ Made by Samur Eyyubov for MilliNet 2026.
 3. **Explain.** The AI writes 1–3 sentences from the computed numbers only. The app then checks every number in the text against the result (`lib/numbercheck.ts`). If any number doesn't match, a template answer is shown instead.
 4. **Show.** The chart, the table and the source link are drawn by fixed code.
 
-If the data can't answer a question (for example, today's price of bread in Baku), the app says so instead of guessing. The three example questions on the home page use fixed plans, so they answer instantly and keep working even if the AI service is down.
+If the data can't answer a question (for example, today's price of bread in Baku), the app says so instead of guessing. The example questions, headline cards, explorer and follow-ups use fixed plans, so they answer instantly and keep working even if the AI service is down.
+
+## Features
+
+- **Headline cards** on the home page: population, inflation, the dollar rate and the average wage, with the change on the previous year and a 10-year sparkline. Tap a card for the full chart.
+- **Share and download**: every answer has a share link, a CSV download and a chart image (PNG). A share link stores the query plan (for example `/?a=DT_BL_001.001.trend.2016-2025.line`), not the answer, so opening it recomputes the same numbers from the data with no AI call.
+- **"How was this calculated?"** under each answer: the official table and its id, the figures, the years, the operation, and whether the AI text passed the number check.
+- **Follow-up buttons**: all years, last 5 years, highest year, or compare with another figure from the same table.
+- **Explore data** tab: pick a table, up to 4 figures, the years and a chart type.
+- **Voice questions** through the browser's speech recognition (Azerbaijani or English), where the browser supports it.
+- Works on phones, follows the system dark mode, and can be added to the home screen.
+
+The headline cards, example questions, follow-ups, explorer and share links all run in the browser on the bundled data (`lib/local.ts`), so they are instant and never use the Gemini quota. Only typed or spoken questions call the AI.
 
 ## Data
 
