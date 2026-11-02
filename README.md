@@ -71,7 +71,21 @@ npm test
 
 ## MilliNet badge
 
-The MilliNet rules require their badge on the home page. Copy the code from millinet.az → your account → **Kod**, and put it in the `<div id="millinet-badge" />` at the bottom of `app/page.tsx`.
+The MilliNet rules require their badge on the home page, or the entry can be excluded. Copy the code from millinet.az → your account → your project → **Kod**, and paste it between the backticks in `lib/millinet-badge.ts`, exactly as given. (Or, without touching code: set it as the Vercel environment variable `NEXT_PUBLIC_MILLINET_BADGE` and redeploy.)
+
+`components/MilliNetBadge.tsx` shows it at the bottom of the home page and runs any script inside it. If the JavaScript version doesn't appear, use the plain HTML code from the bottom of the same **Kod** window. While the code is missing, `npm run dev` shows a red "badge missing" box there; the live site shows nothing.
+
+## Accuracy test (20 questions)
+
+`tests/eval/questions.json` holds 20 test questions (10 Azerbaijani, 10 English, 3 the app should refuse) with the numbers a correct answer must show. `npm test` checks those numbers against the data. To test the AI itself:
+
+```bash
+npm run dev                                       # in one terminal, with GEMINI_API_KEY in .env.local
+npm run eval                                      # in another; takes about 5 minutes
+EVAL_URL=https://data-danis.vercel.app npm run eval   # or test the live site
+```
+
+A question passes when the app picks the right table, shows every expected figure, and its text passes the number check; or, for the 3 refusals, when it politely declines. The goal is 16 of 20. Details go to `eval-results.json`. The run counts toward the per-visitor limit (20 an hour), and repeated questions are answered from the cache, so run it once per change.
 
 ## Project layout
 

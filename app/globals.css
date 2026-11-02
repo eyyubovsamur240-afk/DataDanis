@@ -259,3 +259,8 @@ footer { margin-left: 44px; }
   .tabs .long { display: none; }
   .tabs .short { display: inline; }
 }
+
+/* MilliNet badge: shown as MilliNet supplies it, under the footer text */
+.millinet-badge { margin-top: 14px; display: flex; justify-content: flex-start; align-items: center; min-height: 31px; }
+.millinet-badge img { max-width: 100%; height: auto; }
+.badge-missing { margin-top: 14px; padding: 8px 10px; border: 1px dashed #d33; color: #d33; border-radius: 8px; font-size: 0.8rem; }

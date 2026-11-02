@@ -5,6 +5,7 @@ import Highlights from "@/components/Highlights";
 import Explorer from "@/components/Explorer";
 import Rates from "@/components/Rates";
 import VoiceButton from "@/components/VoiceButton";
+import MilliNetBadge from "@/components/MilliNetBadge";
 import { UI } from "@/lib/i18n";
 import { EXAMPLES } from "@/lib/examples";
 import { DATASETS, DATA_AS_OF, getDataset, type Lang } from "@/lib/catalog";
@@ -237,8 +238,8 @@ export default function Home() {
             {t.credit} {DATA_AS_OF && `${t.dataAsOf}: ${DATA_AS_OF}.`}
           </p>
           <p className="muted">{t.builtBy}</p>
-          {/* MilliNet badge: paste the code from millinet.az → your account → "Kod" here (see README). */}
-          <div id="millinet-badge" />
+          {/* MilliNet badge (required by the contest): the code goes in lib/millinet-badge.ts */}
+          <MilliNetBadge />
         </footer>
       </main>
 
