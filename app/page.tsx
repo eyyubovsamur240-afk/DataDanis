@@ -11,26 +11,21 @@ import { DATASETS, DATA_AS_OF, getDataset, type Lang } from "@/lib/catalog";
 import { MAX_QUESTION_CHARS } from "@/lib/guards-shared";
 import { answerLocally, type PlanInput } from "@/lib/local";
 import { decodePlan } from "@/lib/share";
+import { chatContext, loadChat, saveChat, type Turn } from "@/lib/chat";
 import type { AskOk, AskFail } from "@/app/api/ask/route";
 
-interface Turn {
-  id: number;
-  question: string;
-  status: "loading" | "done";
-  viaAi: boolean;
-  reply?: AskOk | AskFail;
-}
-
-type Tab = "ask" | "explore";
+type Tab = "chat" | "explore";
 let nextId = 1;
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("az");
-  const [tab, setTab] = useState<Tab>("ask");
+  const [tab, setTab] = useState<Tab>("chat");
   const [input, setInput] = useState("");
   const [turns, setTurns] = useState<Turn[]>([]);
   const [busy, setBusy] = useState(false);
+  const [ready, setReady] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
+  const boxRef = useRef<HTMLTextAreaElement>(null);
   const t = UI[lang];
 
   useEffect(() => {
@@ -38,27 +33,42 @@ export default function Home() {
   }, [lang]);
   useEffect(() => {
     if (turns.length) endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [turns]);
-
-  // Shared links: /?a=<plan>&lang=az recompute the answer locally.
+    if (ready) saveChat(turns);
+  }, [turns, ready]);
+  // Grow the input box with its text, up to about 5 lines.
   useEffect(() => {
+    const el = boxRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${Math.min(el.scrollHeight, 140)}px`;
+  }, [input]);
+
+  // On load: restore the saved conversation, then add a shared answer (/?a=<plan>) if the link has one.
+  useEffect(() => {
+    const saved = loadChat();
+    nextId = Math.max(0, ...saved.map((x) => x.id)) + 1;
     const qs = new URLSearchParams(window.location.search);
     const l = qs.get("lang");
     const startLang: Lang = l === "en" ? "en" : "az";
     if (l === "en") setLang("en");
     const a = qs.get("a");
     const plan = a ? decodePlan(a) : null;
+    let restored = saved;
     if (plan) {
       const ds = getDataset(plan.dataset_id)!;
       const yrs = plan.year_from && plan.year_to && plan.year_from !== plan.year_to ? `${plan.year_from}–${plan.year_to}` : `${plan.year_to ?? ""}`;
-      showLocal(`${startLang === "az" ? ds.title_az : ds.title_en}${yrs ? ` · ${yrs}` : ""}`, plan, startLang);
+      const q = `${startLang === "az" ? ds.title_az : ds.title_en}${yrs ? ` · ${yrs}` : ""}`;
+      restored = [...saved, { id: nextId++, question: q, status: "done", viaAi: false, reply: answerLocally(plan, startLang) }];
+      window.history.replaceState(null, "", window.location.pathname);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setTurns(restored);
+    setReady(true);
   }, []);
 
   function showLocal(question: string, plan: PlanInput, l: Lang = lang) {
     const reply = answerLocally(plan, l);
     setTurns((ts) => [...ts, { id: nextId++, question, status: "done", viaAi: false, reply }]);
+    setTab("chat");
   }
 
   async function ask(question: string, exampleId?: string) {
@@ -67,7 +77,8 @@ export default function Home() {
     const ex = exampleId ? EXAMPLES.find((e) => e.id === exampleId) : undefined;
     if (ex) return showLocal(q, ex.plan);
     const id = nextId++;
-    setTurns((ts) => [...ts, { id, question: q, status: "loading", viaAi: true }]);
+    const context = chatContext(turns);
+    setTurns((ts) => [...ts, { id, question: q, status: "loading", viaAi: true, followUp: Boolean(context) }]);
     setInput("");
     setBusy(true);
     let reply: AskOk | AskFail;
@@ -75,7 +86,7 @@ export default function Home() {
       const res = await fetch("/api/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: q, lang }),
+        body: JSON.stringify({ question: q, lang, ...(context ? { context } : {}) }),
       });
       reply = await res.json();
     } catch {
@@ -94,22 +105,31 @@ export default function Home() {
   }
 
   const empty = turns.length === 0;
+  const lastId = turns.length ? turns[turns.length - 1].id : -1;
 
   return (
-    <>
+    <div className="app">
       <header className="top">
         <div className="top-inner">
           <a className="brand" href="/" aria-label="DataDanış">
             <Logo /> <span>DataDanış</span>
           </a>
           <nav className="tabs" aria-label="sections">
-            <button className={tab === "ask" ? "on" : ""} onClick={() => setTab("ask")}>
-              {t.navAsk}
+            <button className={tab === "chat" ? "on" : ""} onClick={() => setTab("chat")}>
+              {t.navChat}
             </button>
             <button className={tab === "explore" ? "on" : ""} onClick={() => setTab("explore")}>
-              {t.navExplore}
+              <span className="long">{t.navExplore}</span>
+              <span className="short">{lang === "az" ? "Araşdır" : "Explore"}</span>
             </button>
           </nav>
+          {!empty && (
+            <button className="icon-btn" onClick={() => setTurns([])} title={t.newChatTitle} aria-label={t.newChatTitle}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" />
+              </svg>
+            </button>
+          )}
           <button className="lang" onClick={() => setLang(lang === "az" ? "en" : "az")} aria-label={t.switchLang}>
             {lang === "az" ? "EN" : "AZ"}
           </button>
@@ -119,89 +139,75 @@ export default function Home() {
       <main>
         {tab === "explore" && <Explorer lang={lang} onRun={(label, plan) => showLocal(label, plan)} />}
 
-        {tab === "ask" && empty && (
-          <section className="hero">
-            <p className="kicker">{t.heroKicker}</p>
-            <h1>{t.heroTitle}</h1>
-            <p className="sub">{t.heroSub}</p>
-            <ul className="trust">
-              <li>{t.trust1}</li>
-              <li>{t.trust2}</li>
-              <li>{t.trust3}</li>
-            </ul>
-            <h2 className="section-title">{t.latest}</h2>
-            <Highlights lang={lang} onOpen={(label, plan) => showLocal(label, plan)} />
-            <Rates lang={lang} />
-          </section>
-        )}
-
-        {tab === "ask" && (
-          <section className="examples" aria-label={t.examples}>
-            <h2 className="section-title">{t.examples}</h2>
-            <div className="chips">
-              {EXAMPLES.map((ex) => (
-                <button key={ex.id} className="chip" disabled={busy} onClick={() => ask(ex.question[lang], ex.id)}>
-                  {ex.question[lang]}
-                </button>
-              ))}
+        {tab === "chat" && (
+          <section className="thread" aria-live="polite">
+            <div className="msg bot">
+              <Avatar />
+              <div className="bubble">
+                <p>{t.greeting}</p>
+                <p className="muted small">{t.greetingFollow}</p>
+                {empty && (
+                  <>
+                    <span className="bubble-label">{t.tryThese}</span>
+                    <div className="chips">
+                      {EXAMPLES.map((ex) => (
+                        <button key={ex.id} className="chip" disabled={busy} onClick={() => ask(ex.question[lang], ex.id)}>
+                          {ex.question[lang]}
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
-          </section>
-        )}
 
-        {turns.length > 0 && (
-          <section className="chat" aria-live="polite">
-            {turns.map((turn) => (
-              <article key={turn.id} className="turn">
-                <p className="q">
-                  <span>{turn.question}</span>
-                </p>
-                <div className="a card">
-                  {turn.status === "loading" && (
-                    <p className="loading">
-                      <span className="dots" aria-hidden>
-                        <i />
-                        <i />
-                        <i />
-                      </span>
-                      {t.thinking}
-                    </p>
-                  )}
-                  {turn.reply && (
-                    <span className={`tag ${turn.viaAi ? "ai" : "local"}`}>{turn.viaAi ? t.aiAnswer : t.noAi}</span>
-                  )}
-                  {turn.reply && !turn.reply.ok && <p className="error">{turn.reply.message}</p>}
-                  {turn.reply && turn.reply.ok && (
-                    <Answer reply={turn.reply} turnId={turn.id} viaAi={turn.viaAi} onFollow={(label, plan) => showLocal(label, plan)} />
-                  )}
+            {empty && (
+              <div className="msg bot extra">
+                <span className="avatar-space" />
+                <div className="bubble wide">
+                  <span className="bubble-label">{t.latest}</span>
+                  <Highlights lang={lang} onOpen={(label, plan) => showLocal(label, plan)} />
+                  <Rates lang={lang} />
                 </div>
-              </article>
-            ))}
-            <div className="chat-tools">
-              <button className="link" onClick={() => setTurns([])}>
-                {t.newChat}
-              </button>
-            </div>
-            <div ref={endRef} />
-          </section>
-        )}
+              </div>
+            )}
 
-        {tab === "ask" && empty && (
-          <section className="how card">
-            <h2 className="section-title">{t.howTitle}</h2>
-            <ol>
-              <li>
-                <b>1</b>
-                <span>{t.how1}</span>
-              </li>
-              <li>
-                <b>2</b>
-                <span>{t.how2}</span>
-              </li>
-              <li>
-                <b>3</b>
-                <span>{t.how3}</span>
-              </li>
-            </ol>
+            {turns.map((turn) => (
+              <div key={turn.id} className="pair">
+                <div className="msg user">
+                  <div className="bubble">{turn.question}</div>
+                </div>
+                <div className="msg bot">
+                  <Avatar />
+                  <div className="bubble wide">
+                    {turn.status === "loading" && (
+                      <p className="loading" aria-label={t.thinking}>
+                        <span className="dots" aria-hidden>
+                          <i />
+                          <i />
+                          <i />
+                        </span>
+                        <span className="muted small">{turn.followUp ? t.contextOn : t.thinking}</span>
+                      </p>
+                    )}
+                    {turn.reply?.ok && (
+                      <span className={`tag ${turn.viaAi ? "ai" : "local"}`}>{turn.viaAi ? t.aiAnswer : t.noAi}</span>
+                    )}
+                    {turn.reply && !turn.reply.ok && <p className="error">{turn.reply.message}</p>}
+                    {turn.reply && turn.reply.ok && (
+                      <Answer
+                        reply={turn.reply}
+                        turnId={turn.id}
+                        viaAi={turn.viaAi}
+                        last={turn.id === lastId}
+                        onFollow={(label, plan) => showLocal(label, plan)}
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div ref={endRef} />
           </section>
         )}
 
@@ -244,9 +250,17 @@ export default function Home() {
         }}
       >
         <div className="ask-inner">
-          <input
+          <textarea
+            ref={boxRef}
+            rows={1}
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
+                e.preventDefault();
+                ask(input);
+              }
+            }}
             placeholder={t.placeholder}
             maxLength={MAX_QUESTION_CHARS}
             aria-label={t.placeholder}
@@ -261,14 +275,21 @@ export default function Home() {
             onFinal={(s) => ask(s)}
           />
           <button type="submit" className="send" disabled={busy || !input.trim()} aria-label={t.ask}>
-            <span className="send-text">{t.ask}</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
           </button>
         </div>
       </form>
-    </>
+    </div>
+  );
+}
+
+function Avatar() {
+  return (
+    <span className="avatar" aria-hidden>
+      <Logo />
+    </span>
   );
 }
 

@@ -221,3 +221,41 @@ footer summary { cursor: pointer; font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Chat */
+.thread { padding-top: 14px; }
+.msg { display: flex; gap: 10px; margin: 14px 0; align-items: flex-start; animation: rise 0.25s ease-out; }
+.msg.user { justify-content: flex-end; }
+.avatar, .avatar-space { flex: none; width: 34px; height: 34px; }
+.avatar { display: grid; place-items: center; border-radius: 11px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.avatar svg { width: 24px; height: 24px; }
+.bubble { min-width: 0; padding: 12px 16px; border-radius: 4px 18px 18px 18px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.bubble.wide { flex: 1; }
+.bubble > p { margin: 0 0 8px; }
+.bubble > p:last-child { margin-bottom: 0; }
+.msg.user .bubble { max-width: 80%; background: var(--ink); color: var(--bg); border-color: var(--ink); border-radius: 18px 18px 4px 18px; font-weight: 500; white-space: pre-wrap; overflow-wrap: anywhere; }
+.bubble-label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); font-weight: 700; margin: 12px 0 8px; }
+.bubble.wide > .bubble-label:first-child { margin-top: 0; }
+.msg.extra { margin-top: -4px; }
+.msg.extra .bubble { background: transparent; border: 0; box-shadow: none; padding: 0; }
+.msg .loading { margin: 2px 0; }
+.icon-btn { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink-2); }
+.icon-btn:hover { border-color: var(--brand); color: var(--brand-ink); }
+.ask textarea { flex: 1; font: inherit; font-size: 1rem; line-height: 1.4; padding: 10px; border: 0; background: transparent; color: var(--ink); min-width: 0; outline: none; resize: none; max-height: 140px; }
+.send { width: 42px; padding: 0; }
+.ask-inner { align-items: flex-end; }
+footer { margin-left: 44px; }
+@media (max-width: 640px) {
+  .avatar, .avatar-space { width: 28px; height: 28px; border-radius: 9px; }
+  .avatar svg { width: 20px; height: 20px; }
+  .msg { gap: 8px; }
+  .bubble { padding: 10px 12px; }
+  .msg.user .bubble { max-width: 88%; }
+  footer { margin-left: 0; }
+  .tabs { margin-left: auto; }
+}
+.tabs .short { display: none; }
+@media (max-width: 640px) {
+  .tabs .long { display: none; }
+  .tabs .short { display: inline; }
+}
